@@ -21,7 +21,7 @@ product_name:    AS6712-32X
 version:         '1'
 
 port_info:
-    number_ports:    32
+    number_ports:    104
     max_port_speed:  40000
     max_transmission_unit: 9216
     max_lag_count:         1024
@@ -184,8 +184,8 @@ ports:
        connector:          QSFP_PLUS
        max_speed:          40000
        speeds:             [40000]
-       capabilities:       [enet40G]
-       subports:           []
+       capabilities:       [enet40G, split_4]
+       subports:           [5-1,5-2,5-3,5-4]
        supported_modules:  [TBD]
        module_eeprom:      qsfpp5
        module_signals:
@@ -212,15 +212,63 @@ ports:
                 device:     cpld2
                 register:   0x06
                 bitmask:    0x10
-    -  name:             6
+    -  name:             "5-1"
+       switch_device:      0
+       switch_device_port: 5
+       parent_port:        5
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      1
+    -  name:             "5-2"
        switch_device:      0
        switch_device_port: 6
+       parent_port:        5
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      2
+    -  name:             "5-3"
+       switch_device:      0
+       switch_device_port: 7
+       parent_port:        5
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      3
+    -  name:             "5-4"
+       switch_device:      0
+       switch_device_port: 8
+       parent_port:        5
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      4
+    -  name:             6
+       switch_device:      0
+       switch_device_port: 9
        pluggable:          True
        connector:          QSFP_PLUS
        max_speed:          40000
        speeds:             [40000]
-       capabilities:       [enet40G]
-       subports:           []
+       capabilities:       [enet40G, split_4]
+       subports:           [6-1,6-2,6-3,6-4]
        supported_modules:  [TBD]
        module_eeprom:      qsfpp6
        module_signals:
@@ -247,15 +295,63 @@ ports:
                 device:     cpld2
                 register:   0x06
                 bitmask:    0x20
+    -  name:             "6-1"
+       switch_device:      0
+       switch_device_port: 9
+       parent_port:        6
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      1
+    -  name:             "6-2"
+       switch_device:      0
+       switch_device_port: 10
+       parent_port:        6
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      2
+    -  name:             "6-3"
+       switch_device:      0
+       switch_device_port: 11
+       parent_port:        6
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      3
+    -  name:             "6-4"
+       switch_device:      0
+       switch_device_port: 12
+       parent_port:        6
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      4
     -  name:             7
        switch_device:      0
-       switch_device_port: 7
+       switch_device_port: 13
        pluggable:          True
        connector:          QSFP_PLUS
        max_speed:          40000
        speeds:             [40000]
-       capabilities:       [enet40G]
-       subports:           []
+       capabilities:       [enet40G, split_4]
+       subports:           [7-1,7-2,7-3,7-4]
        supported_modules:  [TBD]
        module_eeprom:      qsfpp7
        module_signals:
@@ -282,15 +378,63 @@ ports:
                 device:     cpld2
                 register:   0x06
                 bitmask:    0x40
+    -  name:             "7-1"
+       switch_device:      0
+       switch_device_port: 13
+       parent_port:        7
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      1
+    -  name:             "7-2"
+       switch_device:      0
+       switch_device_port: 14
+       parent_port:        7
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      2
+    -  name:             "7-3"
+       switch_device:      0
+       switch_device_port: 15
+       parent_port:        7
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      3
+    -  name:             "7-4"
+       switch_device:      0
+       switch_device_port: 16
+       parent_port:        7
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      4
     -  name:             8
        switch_device:      0
-       switch_device_port: 8
+       switch_device_port: 17
        pluggable:          True
        connector:          QSFP_PLUS
        max_speed:          40000
        speeds:             [40000]
-       capabilities:       [enet40G]
-       subports:           []
+       capabilities:       [enet40G, split_4]
+       subports:           [8-1,8-2,8-3,8-4]
        supported_modules:  [TBD]
        module_eeprom:      qsfpp8
        module_signals:
@@ -317,15 +461,63 @@ ports:
                 device:     cpld2
                 register:   0x06
                 bitmask:    0x80
+    -  name:             "8-1"
+       switch_device:      0
+       switch_device_port: 17
+       parent_port:        8
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      1
+    -  name:             "8-2"
+       switch_device:      0
+       switch_device_port: 18
+       parent_port:        8
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      2
+    -  name:             "8-3"
+       switch_device:      0
+       switch_device_port: 19
+       parent_port:        8
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      3
+    -  name:             "8-4"
+       switch_device:      0
+       switch_device_port: 20
+       parent_port:        8
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      4
     -  name:             9
        switch_device:      0
-       switch_device_port: 9
+       switch_device_port: 21
        pluggable:          True
        connector:          QSFP_PLUS
        max_speed:          40000
        speeds:             [40000]
-       capabilities:       [enet40G]
-       subports:           []
+       capabilities:       [enet40G, split_4]
+       subports:           [9-1,9-2,9-3,9-4]
        supported_modules:  [TBD]
        module_eeprom:      qsfpp9
        module_signals:
@@ -352,15 +544,63 @@ ports:
                 device:     cpld2
                 register:   0x07
                 bitmask:    0x01
+    -  name:             "9-1"
+       switch_device:      0
+       switch_device_port: 21
+       parent_port:        9
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      1
+    -  name:             "9-2"
+       switch_device:      0
+       switch_device_port: 22
+       parent_port:        9
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      2
+    -  name:             "9-3"
+       switch_device:      0
+       switch_device_port: 23
+       parent_port:        9
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      3
+    -  name:             "9-4"
+       switch_device:      0
+       switch_device_port: 24
+       parent_port:        9
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      4
     -  name:             10
        switch_device:      0
-       switch_device_port: 10
+       switch_device_port: 25
        pluggable:          True
        connector:          QSFP_PLUS
        max_speed:          40000
        speeds:             [40000]
-       capabilities:       [enet40G]
-       subports:           []
+       capabilities:       [enet40G, split_4]
+       subports:           [10-1,10-2,10-3,10-4]
        supported_modules:  [TBD]
        module_eeprom:      qsfpp10
        module_signals:
@@ -387,15 +627,63 @@ ports:
                 device:     cpld2
                 register:   0x07
                 bitmask:    0x02
+    -  name:             "10-1"
+       switch_device:      0
+       switch_device_port: 25
+       parent_port:        10
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      1
+    -  name:             "10-2"
+       switch_device:      0
+       switch_device_port: 26
+       parent_port:        10
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      2
+    -  name:             "10-3"
+       switch_device:      0
+       switch_device_port: 27
+       parent_port:        10
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      3
+    -  name:             "10-4"
+       switch_device:      0
+       switch_device_port: 28
+       parent_port:        10
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      4
     -  name:             11
        switch_device:      0
-       switch_device_port: 11
+       switch_device_port: 29
        pluggable:          True
        connector:          QSFP_PLUS
        max_speed:          40000
        speeds:             [40000]
-       capabilities:       [enet40G]
-       subports:           []
+       capabilities:       [enet40G, split_4]
+       subports:           [11-1,11-2,11-3,11-4]
        supported_modules:  [TBD]
        module_eeprom:      qsfpp11
        module_signals:
@@ -422,15 +710,63 @@ ports:
                 device:     cpld2
                 register:   0x07
                 bitmask:    0x04
+    -  name:             "11-1"
+       switch_device:      0
+       switch_device_port: 29
+       parent_port:        11
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      1
+    -  name:             "11-2"
+       switch_device:      0
+       switch_device_port: 30
+       parent_port:        11
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      2
+    -  name:             "11-3"
+       switch_device:      0
+       switch_device_port: 31
+       parent_port:        11
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      3
+    -  name:             "11-4"
+       switch_device:      0
+       switch_device_port: 32
+       parent_port:        11
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      4
     -  name:             12
        switch_device:      0
-       switch_device_port: 12
+       switch_device_port: 33
        pluggable:          True
        connector:          QSFP_PLUS
        max_speed:          40000
        speeds:             [40000]
-       capabilities:       [enet40G]
-       subports:           []
+       capabilities:       [enet40G, split_4]
+       subports:           [12-1,12-2,12-3,12-4]
        supported_modules:  [TBD]
        module_eeprom:      qsfpp12
        module_signals:
@@ -457,15 +793,63 @@ ports:
                 device:     cpld2
                 register:   0x07
                 bitmask:    0x08
+    -  name:             "12-1"
+       switch_device:      0
+       switch_device_port: 33
+       parent_port:        12
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      1
+    -  name:             "12-2"
+       switch_device:      0
+       switch_device_port: 34
+       parent_port:        12
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      2
+    -  name:             "12-3"
+       switch_device:      0
+       switch_device_port: 35
+       parent_port:        12
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      3
+    -  name:             "12-4"
+       switch_device:      0
+       switch_device_port: 36
+       parent_port:        12
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      4
     -  name:             13
        switch_device:      0
-       switch_device_port: 13
+       switch_device_port: 37
        pluggable:          True
        connector:          QSFP_PLUS
        max_speed:          40000
        speeds:             [40000]
-       capabilities:       [enet40G]
-       subports:           []
+       capabilities:       [enet40G, split_4]
+       subports:           [13-1,13-2,13-3,13-4]
        supported_modules:  [TBD]
        module_eeprom:      qsfpp13
        module_signals:
@@ -492,15 +876,63 @@ ports:
                 device:     cpld2
                 register:   0x07
                 bitmask:    0x10
+    -  name:             "13-1"
+       switch_device:      0
+       switch_device_port: 37
+       parent_port:        13
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      1
+    -  name:             "13-2"
+       switch_device:      0
+       switch_device_port: 38
+       parent_port:        13
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      2
+    -  name:             "13-3"
+       switch_device:      0
+       switch_device_port: 39
+       parent_port:        13
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      3
+    -  name:             "13-4"
+       switch_device:      0
+       switch_device_port: 40
+       parent_port:        13
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      4
     -  name:             14
        switch_device:      0
-       switch_device_port: 14
+       switch_device_port: 41
        pluggable:          True
        connector:          QSFP_PLUS
        max_speed:          40000
        speeds:             [40000]
-       capabilities:       [enet40G]
-       subports:           []
+       capabilities:       [enet40G, split_4]
+       subports:           [14-1,14-2,14-3,14-4]
        supported_modules:  [TBD]
        module_eeprom:      qsfpp14
        module_signals:
@@ -527,15 +959,63 @@ ports:
                 device:     cpld2
                 register:   0x07
                 bitmask:    0x20
+    -  name:             "14-1"
+       switch_device:      0
+       switch_device_port: 41
+       parent_port:        14
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      1
+    -  name:             "14-2"
+       switch_device:      0
+       switch_device_port: 42
+       parent_port:        14
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      2
+    -  name:             "14-3"
+       switch_device:      0
+       switch_device_port: 43
+       parent_port:        14
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      3
+    -  name:             "14-4"
+       switch_device:      0
+       switch_device_port: 44
+       parent_port:        14
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      4
     -  name:             15
        switch_device:      0
-       switch_device_port: 15
+       switch_device_port: 45
        pluggable:          True
        connector:          QSFP_PLUS
        max_speed:          40000
        speeds:             [40000]
-       capabilities:       [enet40G]
-       subports:           []
+       capabilities:       [enet40G, split_4]
+       subports:           [15-1,15-2,15-3,15-4]
        supported_modules:  [TBD]
        module_eeprom:      qsfpp15
        module_signals:
@@ -562,15 +1042,63 @@ ports:
                 device:     cpld2
                 register:   0x07
                 bitmask:    0x40
+    -  name:             "15-1"
+       switch_device:      0
+       switch_device_port: 45
+       parent_port:        15
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      1
+    -  name:             "15-2"
+       switch_device:      0
+       switch_device_port: 46
+       parent_port:        15
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      2
+    -  name:             "15-3"
+       switch_device:      0
+       switch_device_port: 47
+       parent_port:        15
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      3
+    -  name:             "15-4"
+       switch_device:      0
+       switch_device_port: 48
+       parent_port:        15
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      4
     -  name:             16
        switch_device:      0
-       switch_device_port: 16
+       switch_device_port: 49
        pluggable:          True
        connector:          QSFP_PLUS
        max_speed:          40000
        speeds:             [40000]
-       capabilities:       [enet40G]
-       subports:           []
+       capabilities:       [enet40G, split_4]
+       subports:           [16-1,16-2,16-3,16-4]
        supported_modules:  [TBD]
        module_eeprom:      qsfpp16
        module_signals:
@@ -597,15 +1125,63 @@ ports:
                 device:     cpld2
                 register:   0x07
                 bitmask:    0x80
+    -  name:             "16-1"
+       switch_device:      0
+       switch_device_port: 49
+       parent_port:        16
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      1
+    -  name:             "16-2"
+       switch_device:      0
+       switch_device_port: 50
+       parent_port:        16
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      2
+    -  name:             "16-3"
+       switch_device:      0
+       switch_device_port: 51
+       parent_port:        16
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      3
+    -  name:             "16-4"
+       switch_device:      0
+       switch_device_port: 52
+       parent_port:        16
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      4
     -  name:             17
        switch_device:      0
-       switch_device_port: 17
+       switch_device_port: 53
        pluggable:          True
        connector:          QSFP_PLUS
        max_speed:          40000
        speeds:             [40000]
-       capabilities:       [enet40G]
-       subports:           []
+       capabilities:       [enet40G, split_4]
+       subports:           [17-1,17-2,17-3,17-4]
        supported_modules:  [TBD]
        module_eeprom:      qsfpp17
        module_signals:
@@ -632,15 +1208,63 @@ ports:
                 device:     cpld3
                 register:   0x06
                 bitmask:    0x01
+    -  name:             "17-1"
+       switch_device:      0
+       switch_device_port: 53
+       parent_port:        17
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      1
+    -  name:             "17-2"
+       switch_device:      0
+       switch_device_port: 54
+       parent_port:        17
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      2
+    -  name:             "17-3"
+       switch_device:      0
+       switch_device_port: 55
+       parent_port:        17
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      3
+    -  name:             "17-4"
+       switch_device:      0
+       switch_device_port: 56
+       parent_port:        17
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      4
     -  name:             18
        switch_device:      0
-       switch_device_port: 18
+       switch_device_port: 57
        pluggable:          True
        connector:          QSFP_PLUS
        max_speed:          40000
        speeds:             [40000]
-       capabilities:       [enet40G]
-       subports:           []
+       capabilities:       [enet40G, split_4]
+       subports:           [18-1,18-2,18-3,18-4]
        supported_modules:  [TBD]
        module_eeprom:      qsfpp18
        module_signals:
@@ -667,15 +1291,63 @@ ports:
                 device:     cpld3
                 register:   0x06
                 bitmask:    0x02
+    -  name:             "18-1"
+       switch_device:      0
+       switch_device_port: 57
+       parent_port:        18
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      1
+    -  name:             "18-2"
+       switch_device:      0
+       switch_device_port: 58
+       parent_port:        18
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      2
+    -  name:             "18-3"
+       switch_device:      0
+       switch_device_port: 59
+       parent_port:        18
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      3
+    -  name:             "18-4"
+       switch_device:      0
+       switch_device_port: 60
+       parent_port:        18
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      4
     -  name:             19
        switch_device:      0
-       switch_device_port: 19
+       switch_device_port: 61
        pluggable:          True
        connector:          QSFP_PLUS
        max_speed:          40000
        speeds:             [40000]
-       capabilities:       [enet40G]
-       subports:           []
+       capabilities:       [enet40G, split_4]
+       subports:           [19-1,19-2,19-3,19-4]
        supported_modules:  [TBD]
        module_eeprom:      qsfpp19
        module_signals:
@@ -702,15 +1374,63 @@ ports:
                 device:     cpld3
                 register:   0x06
                 bitmask:    0x04
+    -  name:             "19-1"
+       switch_device:      0
+       switch_device_port: 61
+       parent_port:        19
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      1
+    -  name:             "19-2"
+       switch_device:      0
+       switch_device_port: 62
+       parent_port:        19
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      2
+    -  name:             "19-3"
+       switch_device:      0
+       switch_device_port: 63
+       parent_port:        19
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      3
+    -  name:             "19-4"
+       switch_device:      0
+       switch_device_port: 64
+       parent_port:        19
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      4
     -  name:             20
        switch_device:      0
-       switch_device_port: 20
+       switch_device_port: 65
        pluggable:          True
        connector:          QSFP_PLUS
        max_speed:          40000
        speeds:             [40000]
-       capabilities:       [enet40G]
-       subports:           []
+       capabilities:       [enet40G, split_4]
+       subports:           [20-1,20-2,20-3,20-4]
        supported_modules:  [TBD]
        module_eeprom:      qsfpp20
        module_signals:
@@ -737,15 +1457,63 @@ ports:
                 device:     cpld3
                 register:   0x06
                 bitmask:    0x08
+    -  name:             "20-1"
+       switch_device:      0
+       switch_device_port: 65
+       parent_port:        20
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      1
+    -  name:             "20-2"
+       switch_device:      0
+       switch_device_port: 66
+       parent_port:        20
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      2
+    -  name:             "20-3"
+       switch_device:      0
+       switch_device_port: 67
+       parent_port:        20
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      3
+    -  name:             "20-4"
+       switch_device:      0
+       switch_device_port: 68
+       parent_port:        20
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      4
     -  name:             21
        switch_device:      0
-       switch_device_port: 21
+       switch_device_port: 69
        pluggable:          True
        connector:          QSFP_PLUS
        max_speed:          40000
        speeds:             [40000]
-       capabilities:       [enet40G]
-       subports:           []
+       capabilities:       [enet40G, split_4]
+       subports:           [21-1,21-2,21-3,21-4]
        supported_modules:  [TBD]
        module_eeprom:      qsfpp21
        module_signals:
@@ -772,15 +1540,63 @@ ports:
                 device:     cpld3
                 register:   0x06
                 bitmask:    0x10
+    -  name:             "21-1"
+       switch_device:      0
+       switch_device_port: 69
+       parent_port:        21
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      1
+    -  name:             "21-2"
+       switch_device:      0
+       switch_device_port: 70
+       parent_port:        21
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      2
+    -  name:             "21-3"
+       switch_device:      0
+       switch_device_port: 71
+       parent_port:        21
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      3
+    -  name:             "21-4"
+       switch_device:      0
+       switch_device_port: 72
+       parent_port:        21
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      4
     -  name:             22
        switch_device:      0
-       switch_device_port: 22
+       switch_device_port: 73
        pluggable:          True
        connector:          QSFP_PLUS
        max_speed:          40000
        speeds:             [40000]
-       capabilities:       [enet40G]
-       subports:           []
+       capabilities:       [enet40G, split_4]
+       subports:           [22-1,22-2,22-3,22-4]
        supported_modules:  [TBD]
        module_eeprom:      qsfpp22
        module_signals:
@@ -807,15 +1623,63 @@ ports:
                 device:     cpld3
                 register:   0x06
                 bitmask:    0x20
+    -  name:             "22-1"
+       switch_device:      0
+       switch_device_port: 73
+       parent_port:        22
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      1
+    -  name:             "22-2"
+       switch_device:      0
+       switch_device_port: 74
+       parent_port:        22
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      2
+    -  name:             "22-3"
+       switch_device:      0
+       switch_device_port: 75
+       parent_port:        22
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      3
+    -  name:             "22-4"
+       switch_device:      0
+       switch_device_port: 76
+       parent_port:        22
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      4
     -  name:             23
        switch_device:      0
-       switch_device_port: 23
+       switch_device_port: 77
        pluggable:          True
        connector:          QSFP_PLUS
        max_speed:          40000
        speeds:             [40000]
-       capabilities:       [enet40G]
-       subports:           []
+       capabilities:       [enet40G, split_4]
+       subports:           [23-1,23-2,23-3,23-4]
        supported_modules:  [TBD]
        module_eeprom:      qsfpp23
        module_signals:
@@ -842,15 +1706,63 @@ ports:
                 device:     cpld3
                 register:   0x06
                 bitmask:    0x40
+    -  name:             "23-1"
+       switch_device:      0
+       switch_device_port: 77
+       parent_port:        23
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      1
+    -  name:             "23-2"
+       switch_device:      0
+       switch_device_port: 78
+       parent_port:        23
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      2
+    -  name:             "23-3"
+       switch_device:      0
+       switch_device_port: 79
+       parent_port:        23
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      3
+    -  name:             "23-4"
+       switch_device:      0
+       switch_device_port: 80
+       parent_port:        23
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      4
     -  name:             24
        switch_device:      0
-       switch_device_port: 24
+       switch_device_port: 81
        pluggable:          True
        connector:          QSFP_PLUS
        max_speed:          40000
        speeds:             [40000]
-       capabilities:       [enet40G]
-       subports:           []
+       capabilities:       [enet40G, split_4]
+       subports:           [24-1,24-2,24-3,24-4]
        supported_modules:  [TBD]
        module_eeprom:      qsfpp24
        module_signals:
@@ -877,15 +1789,63 @@ ports:
                 device:     cpld3
                 register:   0x06
                 bitmask:    0x80
+    -  name:             "24-1"
+       switch_device:      0
+       switch_device_port: 81
+       parent_port:        24
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      1
+    -  name:             "24-2"
+       switch_device:      0
+       switch_device_port: 82
+       parent_port:        24
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      2
+    -  name:             "24-3"
+       switch_device:      0
+       switch_device_port: 83
+       parent_port:        24
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      3
+    -  name:             "24-4"
+       switch_device:      0
+       switch_device_port: 84
+       parent_port:        24
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      4
     -  name:             25
        switch_device:      0
-       switch_device_port: 25
+       switch_device_port: 85
        pluggable:          True
        connector:          QSFP_PLUS
        max_speed:          40000
        speeds:             [40000]
-       capabilities:       [enet40G]
-       subports:           []
+       capabilities:       [enet40G, split_4]
+       subports:           [25-1,25-2,25-3,25-4]
        supported_modules:  [TBD]
        module_eeprom:      qsfpp25
        module_signals:
@@ -912,15 +1872,63 @@ ports:
                 device:     cpld3
                 register:   0x07
                 bitmask:    0x01
+    -  name:             "25-1"
+       switch_device:      0
+       switch_device_port: 85
+       parent_port:        25
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      1
+    -  name:             "25-2"
+       switch_device:      0
+       switch_device_port: 86
+       parent_port:        25
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      2
+    -  name:             "25-3"
+       switch_device:      0
+       switch_device_port: 87
+       parent_port:        25
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      3
+    -  name:             "25-4"
+       switch_device:      0
+       switch_device_port: 88
+       parent_port:        25
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      4
     -  name:             26
        switch_device:      0
-       switch_device_port: 26
+       switch_device_port: 89
        pluggable:          True
        connector:          QSFP_PLUS
        max_speed:          40000
        speeds:             [40000]
-       capabilities:       [enet40G]
-       subports:           []
+       capabilities:       [enet40G, split_4]
+       subports:           [26-1,26-2,26-3,26-4]
        supported_modules:  [TBD]
        module_eeprom:      qsfpp26
        module_signals:
@@ -947,15 +1955,63 @@ ports:
                 device:     cpld3
                 register:   0x07
                 bitmask:    0x02
+    -  name:             "26-1"
+       switch_device:      0
+       switch_device_port: 89
+       parent_port:        26
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      1
+    -  name:             "26-2"
+       switch_device:      0
+       switch_device_port: 90
+       parent_port:        26
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      2
+    -  name:             "26-3"
+       switch_device:      0
+       switch_device_port: 91
+       parent_port:        26
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      3
+    -  name:             "26-4"
+       switch_device:      0
+       switch_device_port: 92
+       parent_port:        26
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      4
     -  name:             27
        switch_device:      0
-       switch_device_port: 27
+       switch_device_port: 93
        pluggable:          True
        connector:          QSFP_PLUS
        max_speed:          40000
        speeds:             [40000]
-       capabilities:       [enet40G]
-       subports:           []
+       capabilities:       [enet40G, split_4]
+       subports:           [27-1,27-2,27-3,27-4]
        supported_modules:  [TBD]
        module_eeprom:      qsfpp27
        module_signals:
@@ -982,15 +2038,63 @@ ports:
                 device:     cpld3
                 register:   0x07
                 bitmask:    0x04
+    -  name:             "27-1"
+       switch_device:      0
+       switch_device_port: 93
+       parent_port:        27
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      1
+    -  name:             "27-2"
+       switch_device:      0
+       switch_device_port: 94
+       parent_port:        27
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      2
+    -  name:             "27-3"
+       switch_device:      0
+       switch_device_port: 95
+       parent_port:        27
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      3
+    -  name:             "27-4"
+       switch_device:      0
+       switch_device_port: 96
+       parent_port:        27
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      4
     -  name:             28
        switch_device:      0
-       switch_device_port: 28
+       switch_device_port: 97
        pluggable:          True
        connector:          QSFP_PLUS
        max_speed:          40000
        speeds:             [40000]
-       capabilities:       [enet40G]
-       subports:           []
+       capabilities:       [enet40G, split_4]
+       subports:           [28-1,28-2,28-3,28-4]
        supported_modules:  [TBD]
        module_eeprom:      qsfpp28
        module_signals:
@@ -1017,9 +2121,57 @@ ports:
                 device:     cpld3
                 register:   0x07
                 bitmask:    0x08
+    -  name:             "28-1"
+       switch_device:      0
+       switch_device_port: 97
+       parent_port:        28
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      1
+    -  name:             "28-2"
+       switch_device:      0
+       switch_device_port: 98
+       parent_port:        28
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      2
+    -  name:             "28-3"
+       switch_device:      0
+       switch_device_port: 99
+       parent_port:        28
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      3
+    -  name:             "28-4"
+       switch_device:      0
+       switch_device_port: 100
+       parent_port:        28
+       pluggable:          False
+       connector:          QSFP_PLUS
+       max_speed:          10000
+       speeds:             [10000]
+       capabilities:       [enet10G]
+       subports:           []
+       supported_modules:  [TBD]
+       subport_number:      4
     -  name:             29
        switch_device:      0
-       switch_device_port: 29
+       switch_device_port: 101
        pluggable:          True
        connector:          QSFP_PLUS
        max_speed:          40000
@@ -1054,7 +2206,7 @@ ports:
                 bitmask:    0x10
     -  name:             30
        switch_device:      0
-       switch_device_port: 30
+       switch_device_port: 102
        pluggable:          True
        connector:          QSFP_PLUS
        max_speed:          40000
@@ -1089,7 +2241,7 @@ ports:
                 bitmask:    0x20
     -  name:             31
        switch_device:      0
-       switch_device_port: 31
+       switch_device_port: 103
        pluggable:          True
        connector:          QSFP_PLUS
        max_speed:          40000
@@ -1124,7 +2276,7 @@ ports:
                 bitmask:    0x40
     -  name:             32
        switch_device:      0
-       switch_device_port: 32
+       switch_device_port: 104
        pluggable:          True
        connector:          QSFP_PLUS
        max_speed:          40000

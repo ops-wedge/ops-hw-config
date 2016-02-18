@@ -1,0 +1,36 @@
+# (c) Copyright 2015 Hewlett Packard Enterprise Development LP
+#
+#    Licensed under the Apache License, Version 2.0 (the "License"); you may
+#    not use this file except in compliance with the License. You may obtain
+#    a copy of the License at
+#
+#         http://www.apache.org/licenses/LICENSE-2.0
+#
+#    Unless required by applicable law or agreed to in writing, software
+#    distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+#    WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+#    License for the specific language governing permissions and limitations
+#    under the License.
+#
+#  Fru Description file for generix x86-64 build.
+
+manufacturer:    Generic-x86
+product_name:    X86-64
+version:         '1'
+
+fru_info:
+   country_code:       "US"
+   device_version:      0
+   diag_version:       "1.0.0.0"
+   label_revision:     "L01"
+   manufacture_date:   "09/01/2015 00:00:01"
+   manufacturer:       "OpenSwitch"
+   num_mac:            74
+   onie_version:       "2014.08.00.05"
+   part_number:        "OPSX8664"
+   platform_name:      "Generic-x86-64"
+   product_name:       "OpenSwitch"
+   serial_number:      "X8664001"
+   service_tag:        0
+   vendor:             "OpenSwitch"
+   mac_base:           70:72:cf:00:00:00

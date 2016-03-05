@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2015 Hewlett Packard Enterprise Development LP
+ * (c) Copyright 2015-2016 Hewlett Packard Enterprise Development LP
  *
  *    Licensed under the Apache License, Version 2.0 (the "License"); you may
  *    not use this file except in compliance with the License. You may obtain
@@ -59,11 +59,12 @@ extern "C" {
 #define YAML_MANIFEST_NAME "manifest" /*!< Name to identify manifest file */
 #define YAML_DEVICES_NAME "devices"   /*!< Name to identify devices file */
 #define YAML_FANS_NAME "fans"         /*!< Name to identify fans file */
+#define YAML_FRU_NAME "fru"           /*!< Name to identify fru file */
 #define YAML_LEDS_NAME "leds"         /*!< Name to identify leds file */
 #define YAML_PORTS_NAME "ports"       /*!< Name to identify ports file */
 #define YAML_POWER_NAME "power"       /*!< Name to identify power file */
+#define YAML_QOS_NAME "qos"           /*!< Name to identify qos file */
 #define YAML_THERMAL_NAME "thermal"   /*!< Name to identify thermal file */
-#define YAML_FRU_NAME "fru"           /*!< Name to identify fru file */
 
 /************************************************************************//**
  * STRUCT that contains the content of the subsystem_info portion of the
@@ -431,6 +432,59 @@ typedef struct {
 } YamlFruInfo;
 
 /************************************************************************//**
+ * STRUCT that contains the contents of the schedule profile
+ * entry section of the qos.yaml file.
+ ***************************************************************************/
+typedef struct {
+    int     queue;          /*!< Queue number - index into schedule profile */
+    char    *algorithm;     /*!< queuing algorithm */
+    int     weight;         /*!< weight, if algorithm is wrr */
+} YamlScheduleProfileEntry;
+
+/************************************************************************//**
+ * STRUCT that contains the contents of the queue profile
+ *    entry section of the qos.yaml file.
+ ***************************************************************************/
+typedef struct {
+    int     queue;          /*!< Queue number - index into queue profile */
+    char    *description;   /*!< Entry description */
+    int     local_priority; /*!< COS priority */
+} YamlQueueProfileEntry;
+
+/************************************************************************//**
+ * STRUCT that contains the contents of the COS map entry section
+ *    of the qos.yaml file.
+ ***************************************************************************/
+typedef struct {
+    int     code_point;     /*!< Code point - index into COS map */
+    char    *description;   /*!< Entry description */
+    int     local_priority; /*!< COS priority */
+    char    *color;         /*!< color */
+} YamlCosMapEntry;
+
+/************************************************************************//**
+ * STRUCT that contains the contents of the DSCP map entry
+ *    section of the qos.yaml file.
+ ***************************************************************************/
+typedef struct {
+    int     code_point;     /*!< Code point - index into DSCP map */
+    char    *color;         /*!< color */
+    char    *description;   /*!< Entry description */
+    int     local_priority; /*!< COS priority */
+    int     priority_code_point; /*!< Priority code point */
+} YamlDscpMapEntry;
+
+/************************************************************************//**
+ * STRUCT that contains the contents of the qos_info section of the
+ *    qos.yaml file.
+ ***************************************************************************/
+typedef struct {
+    char    *trust;         /*! Default QOS trust value */
+    char    *default_name;  /*! Name of default profiles */
+    char    *factory_default_name;  /*! Name of factory-default profiles */
+} YamlQosInfo;
+
+/************************************************************************//**
  * TYPEDEF for the opaque Yaml config handle used for each call. The handle
  *    is returned by the yaml_new_config_handle() function.
  ***************************************************************************/
@@ -790,6 +844,127 @@ extern int yaml_parse_fru(YamlConfigHandle handle, const char *subsyst);
  ***************************************************************************/
 extern const YamlFruInfo *yaml_get_fru_info(YamlConfigHandle handle, const char *subsyst);
 
+/************************************************************************//**
+ * Parses and stores internally the information from the
+ * qos.yaml file
+ *
+ * @param[in] handle    :YamlConfigHandle for this subsystem
+ * @param[in] subsyst   :Name of the subsystem
+ *
+ * @return 0 on success, else -1 on failure
+ ***************************************************************************/
+extern int yaml_parse_qos(YamlConfigHandle handle, const char *subsyst);
+
+/************************************************************************//**
+ * Returns global QOS parameters for a subsystem.
+ *
+ * @param[in] handle    :YamlConfigHandle for this subsystem
+ * @param[in] subsyst   :Name of the subsystem
+ *
+ * @return 0 on success, else -1 on failure
+ ***************************************************************************/
+extern YamlQosInfo *yaml_get_qos_info(YamlConfigHandle handle, const char *subsyst);
+
+/************************************************************************//**
+ * Returns number of COS map entries in a subsystem
+ *
+ * @param[in] handle    :YamlConfigHandle for this subsystem
+ * @param[in] subsyst   :Name of the subsystem
+ *
+ * @return number of entries on success, else -1 on failure
+ ***************************************************************************/
+extern int yaml_get_cos_map_entry_count(YamlConfigHandle handle,
+                                        const char *subsyst);
+
+/************************************************************************//**
+ * Returns a pointer to a specific COS map entry
+ *
+ * @param[in] handle    :YamlConfigHandle for this subsystem
+ * @param[in] subsyst   :Name of the subsystem
+ * @param[in] idx       :Index for the specific entry to retrieve
+ *
+ * @return YamlCosMapEntry * on success, else NULL on failure
+ ***************************************************************************/
+extern const YamlCosMapEntry *yaml_get_cos_map_entry(YamlConfigHandle handle,
+                                                     const char *subsyst,
+                                                     unsigned int idx);
+
+/************************************************************************//**
+ * Returns number of DSCP map entries in a subsystem
+ *
+ * @param[in] handle    :YamlConfigHandle for this subsystem
+ * @param[in] subsyst   :Name of the subsystem
+ *
+ * @return number of entries on success, else -1 on failure
+ ***************************************************************************/
+extern int yaml_get_dscp_map_entry_count(YamlConfigHandle handle,
+                                         const char *subsyst);
+
+/************************************************************************//**
+ * Returns a pointer to a specific DSCP map entry
+ *
+ * @param[in] handle    :YamlConfigHandle for this subsystem
+ * @param[in] subsyst   :Name of the subsystem
+ * @param[in] idx       :Index for the specific entry to retrieve
+ *
+ * @return YamlDscpMapEntry * on success, else NULL on failure
+ ***************************************************************************/
+extern const YamlDscpMapEntry *yaml_get_dscp_map_entry(YamlConfigHandle handle,
+                                                       const char *subsyst,
+                                                       unsigned int idx);
+
+/************************************************************************//**
+ * Returns number of default schedule-profile entries in a
+ * subsystem
+ *
+ * @param[in] handle    :YamlConfigHandle for this subsystem
+ * @param[in] subsyst   :Name of the subsystem
+ *
+ * @return number of entries on success, else -1 on failure
+ ***************************************************************************/
+extern int yaml_get_schedule_profile_entry_count(YamlConfigHandle handle,
+                                                 const char *subsyst);
+
+/************************************************************************//**
+ * Returns a pointer to a specific schedule profile entry
+ *
+ * @param[in] handle    :YamlConfigHandle for this subsystem
+ * @param[in] subsyst   :Name of the subsystem
+ * @param[in] idx       :Index for the specific entry to retrieve
+ *
+ * @return YamlScheduleProfileEntry * on success, else NULL on
+ *         failure
+ ***************************************************************************/
+extern const YamlScheduleProfileEntry *yaml_get_schedule_profile_entry(
+                                                     YamlConfigHandle handle,
+                                                     const char *subsyst,
+                                                     unsigned int idx);
+
+/************************************************************************//**
+ * Returns number of schedule profile entries in a subsystem
+ *
+ * @param[in] handle    :YamlConfigHandle for this subsystem
+ * @param[in] subsyst   :Name of the subsystem
+ *
+ * @return number of entries on success, else -1 on failure
+ ***************************************************************************/
+extern int yaml_get_queue_profile_entry_count(YamlConfigHandle handle,
+                                              const char *subsyst);
+
+/************************************************************************//**
+ * Returns a pointer to a specific schedule profile entry
+ *
+ * @param[in] handle    :YamlConfigHandle for this subsystem
+ * @param[in] subsyst   :Name of the subsystem
+ * @param[in] idx       :Index for the specific entry to retrieve
+ *
+ * @return YamlQueueProfileEntry * on success, else NULL on
+ *         failure
+ ***************************************************************************/
+extern const YamlQueueProfileEntry *yaml_get_queue_profile_entry(
+                                                     YamlConfigHandle handle,
+                                                     const char *subsyst,
+                                                     unsigned int idx);
 #ifdef __cplusplus
 };
 #endif

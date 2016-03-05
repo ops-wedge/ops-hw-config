@@ -44,3 +44,5 @@ files:
         filename:   ports.yaml
     -   name:       fru
         filename:   fru.yaml
+    -   name:       qos
+        filename:   qos.yaml

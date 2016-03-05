@@ -47,5 +47,7 @@ files:
         filename:   ports.yaml
     -   name:       power
         filename:   power.yaml
+    -   name:       qos
+        filename:   qos.yaml
     -   name:       thermal
         filename:   thermal.yaml

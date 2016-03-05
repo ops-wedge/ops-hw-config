@@ -1,5 +1,5 @@
 /*
- * (c) Copyright 2015 Hewlett Packard Enterprise Development LP
+ * (c) Copyright 2015-2016 Hewlett Packard Enterprise Development LP
  *
  *    Licensed under the Apache License, Version 2.0 (the "License"); you may
  *    not use this file except in compliance with the License. You may obtain
@@ -26,6 +26,7 @@ using namespace std;
 #include "yaml-cpp/yaml.h"
 #include "config-yaml.h"
 
+#define QOS_MAX_STRING_LENGTH 64
 
 typedef struct {
     map<string, YamlDevice> device_map;
@@ -53,6 +54,12 @@ typedef struct {
     vector<YamlLed>         leds;
 
     YamlFruInfo             fru_info;
+
+    YamlQosInfo             qos_info;
+    vector<YamlScheduleProfileEntry> schedule_profile_entries;
+    vector<YamlQueueProfileEntry>    queue_profile_entries;
+    vector<YamlCosMapEntry>          cos_map_entries;
+    vector<YamlDscpMapEntry>         dscp_map_entries;
 
     vector<i2c_op>          init_ops;
 
@@ -843,6 +850,207 @@ static void operator >> (const YAML::Node &node, map<string, YamlBus> &buses)
     }
 }
 
+/*======*/
+/* QOS. */
+/*======*/
+static void operator >> (const YAML::Node &node, YamlQosInfo &qos_info)
+{
+    string str;
+
+    node["default_name"] >> str;
+    qos_info.default_name = strdup(str.c_str());
+    if (qos_info.default_name != NULL &&
+            strlen(qos_info.default_name) > QOS_MAX_STRING_LENGTH) {
+        std::cout << "config-yaml|ERR|The maximum length is "
+                << QOS_MAX_STRING_LENGTH << " characters: "
+                << qos_info.default_name << std::endl;
+    }
+
+    node["factory_default_name"] >> str;
+    qos_info.factory_default_name = strdup(str.c_str());
+    if (qos_info.factory_default_name != NULL &&
+            strlen(qos_info.factory_default_name) > QOS_MAX_STRING_LENGTH) {
+        std::cout << "config-yaml|ERR|The maximum length is "
+                << QOS_MAX_STRING_LENGTH << " characters: "
+                << qos_info.factory_default_name << std::endl;
+    }
+
+    node["default_qos_trust"] >> str;
+    qos_info.trust = strdup(str.c_str());
+    if (qos_info.trust != NULL &&
+            strncmp(qos_info.trust, "none", QOS_MAX_STRING_LENGTH) != 0 &&
+            strncmp(qos_info.trust, "cos", QOS_MAX_STRING_LENGTH) != 0 &&
+            strncmp(qos_info.trust, "dscp", QOS_MAX_STRING_LENGTH) != 0) {
+        std::cout << "config-yaml|ERR|Unexpected qos trust: "
+                << qos_info.trust << std::endl;
+    }
+}
+
+static void operator >> (const YAML::Node &node, YamlScheduleProfileEntry &entry)
+{
+    string str;
+
+    node["queue"] >> str;
+    entry.queue = strtol(str.c_str(), 0, 0);
+
+    node["algorithm"] >> str;
+    entry.algorithm = strdup(str.c_str());
+    if (entry.algorithm != NULL &&
+            strncmp(entry.algorithm, "strict", QOS_MAX_STRING_LENGTH) != 0 &&
+            strncmp(entry.algorithm, "dwrr", QOS_MAX_STRING_LENGTH) != 0) {
+        std::cout << "config-yaml|ERR|Unexpected algorithm: "
+                << entry.algorithm << std::endl;
+    }
+
+    /* Only check for weight if "dwrr" algorithm */
+    if (strncmp(entry.algorithm, "dwrr", QOS_MAX_STRING_LENGTH) == 0) {
+        node["weight"] >> str;
+        entry.weight = strtol(str.c_str(), 0, 0);
+        if (entry.weight < 1) {
+            std::cout << "config-yaml|ERR|Out of range value for weight: "
+                    << entry.weight << std::endl;
+        }
+    }
+}
+
+static void operator >> (const YAML::Node &node, vector<YamlScheduleProfileEntry> &entries)
+{
+    for (size_t i = 0; i < node.size(); i++) {
+        YamlScheduleProfileEntry entry;
+        node[i] >> entry;
+        entries.push_back(entry);
+    }
+}
+
+static void operator >> (const YAML::Node &node, YamlQueueProfileEntry &entry)
+{
+    string str;
+
+    node["queue"] >> str;
+    entry.queue = strtol(str.c_str(), 0, 0);
+
+    node["description"] >> str;
+    entry.description = strdup(str.c_str());
+    if (entry.description != NULL &&
+            strlen(entry.description) > QOS_MAX_STRING_LENGTH) {
+        std::cout << "config-yaml|ERR|The maximum length is "
+                << QOS_MAX_STRING_LENGTH << " characters: "
+                << entry.description << std::endl;
+    }
+
+    node["local_priority"] >> str;
+    entry.local_priority = strtol(str.c_str(), 0, 0);
+}
+
+static void operator >> (const YAML::Node &node, vector<YamlQueueProfileEntry> &entries)
+{
+    for (size_t i = 0; i < node.size(); i++) {
+        YamlQueueProfileEntry entry;
+        node[i] >> entry;
+        entries.push_back(entry);
+    }
+}
+
+static void operator >> (const YAML::Node &node, YamlCosMapEntry &entry)
+{
+    string str;
+
+    /* name is codepoint */
+    node["code_point"] >> str;
+    entry.code_point = strtol(str.c_str(), 0, 0);
+    if (entry.code_point < 0 || entry.code_point > 7) {
+        std::cout << "config-yaml|ERR|Out of range value for code point: "
+                << entry.code_point << std::endl;
+    }
+
+    /* description is name */
+    node["description"] >> str;
+    entry.description = strdup(str.c_str());
+    if (entry.description != NULL &&
+            strlen(entry.description) > QOS_MAX_STRING_LENGTH) {
+        std::cout << "config-yaml|ERR|The maximum length is "
+                << QOS_MAX_STRING_LENGTH << " characters: "
+                << entry.description << std::endl;
+    }
+
+    node["local_priority"] >> str;
+    entry.local_priority = strtol(str.c_str(), 0, 0);
+
+    node["color"] >> str;
+    entry.color = strdup(str.c_str());
+    if (entry.color != NULL &&
+            strncmp(entry.color, "green", QOS_MAX_STRING_LENGTH) != 0 &&
+            strncmp(entry.color, "yellow", QOS_MAX_STRING_LENGTH) != 0 &&
+            strncmp(entry.color, "red", QOS_MAX_STRING_LENGTH) != 0) {
+        std::cout << "config-yaml|ERR|Unexpected color: "
+                << entry.color << std::endl;
+    }
+}
+
+static void operator >> (const YAML::Node &node, vector<YamlCosMapEntry> &entries)
+{
+    for (size_t i = 0; i < node.size(); i++) {
+        YamlCosMapEntry entry;
+        node[i] >> entry;
+        entries.push_back(entry);
+    }
+}
+
+static void operator >> (const YAML::Node &node, YamlDscpMapEntry &entry)
+{
+    string str;
+
+    /* name is codepoint */
+    node["code_point"] >> str;
+    entry.code_point = strtol(str.c_str(), 0, 0);
+    if (entry.code_point < 0 || entry.code_point > 63) {
+        std::cout << "config-yaml|ERR|Out of range value for code point: "
+                << entry.code_point << std::endl;
+    }
+
+    node["color"] >> str;
+    entry.color = strdup(str.c_str());
+    if (entry.color != NULL &&
+            strncmp(entry.color, "green", QOS_MAX_STRING_LENGTH) != 0 &&
+            strncmp(entry.color, "yellow", QOS_MAX_STRING_LENGTH) != 0 &&
+            strncmp(entry.color, "red", QOS_MAX_STRING_LENGTH) != 0) {
+        std::cout << "config-yaml|ERR|Unexpected color: "
+                << entry.color << std::endl;
+    }
+
+    /* description is name */
+    node["description"] >> str;
+    entry.description = strdup(str.c_str());
+    if (entry.description != NULL &&
+            strlen(entry.description) > QOS_MAX_STRING_LENGTH) {
+        std::cout << "config-yaml|ERR|The maximum length is "
+                << QOS_MAX_STRING_LENGTH << " characters: "
+                << entry.description << std::endl;
+    }
+
+    node["local_priority"] >> str;
+    entry.local_priority = strtol(str.c_str(), 0, 0);
+
+    node["priority_code_point"] >> str;
+    entry.priority_code_point = strtol(str.c_str(), 0, 0);
+    if (entry.priority_code_point < 0 || entry.priority_code_point > 7) {
+        std::cout <<
+                "config-yaml|ERR|Out of range value for priority code point: "
+                << entry.priority_code_point << std::endl;
+    }
+}
+
+static void operator >> (const YAML::Node &node, vector<YamlDscpMapEntry> &entries)
+{
+    for (size_t i = 0; i < node.size(); i++) {
+        YamlDscpMapEntry entry;
+        node[i] >> entry;
+        entries.push_back(entry);
+    }
+}
+/*======*/
+/*======*/
+
 void
 init_info_fields(YamlSubsystem *sub)
 {
@@ -912,6 +1120,9 @@ init_info_fields(YamlSubsystem *sub)
     sub->fru_info.service_tag = '\0';
     sub->fru_info.vendor = '\0';
     sub->fru_info.base_mac_address = '\0';
+
+    // YamlQosInfo
+    sub->qos_info.trust = NULL;
 }
 
 extern "C" const YamlLedType *
@@ -1711,6 +1922,225 @@ yaml_parse_fru(YamlConfigHandle handle, const char *subsyst)
 
     return(0);
 }
+
+/*======*/
+/* QOS. */
+/*======*/
+extern "C" int
+yaml_parse_qos(YamlConfigHandle handle, const char *subsyst)
+{
+    YAML::Node doc;
+    const YamlFile *yfile = NULL;
+
+    YamlConfigHandlePrivate *priv_hand = (YamlConfigHandlePrivate *)handle;
+
+    YamlSubsystem *sub = NULL;
+    string sub_str = subsyst;
+    try {
+        sub = priv_hand->subsystem_map.at(sub_str);
+    } catch(...) {
+        return(-1);
+    }
+
+    // Get the name for the qos file
+    yfile = yaml_find_file(handle, subsyst, YAML_QOS_NAME);
+
+    if (yfile == NULL) {
+        return(0);
+    }
+
+    string file_name = sub->dir_name + string(yfile->filename);
+
+    ifstream fin(file_name.c_str());
+    if (fin.fail()) {
+        return -1;
+    }
+
+    try {
+        YAML::Parser parser(fin);
+        parser.GetNextDocument(doc);
+    } catch (YAML::ParserException &pe) {
+        return(-1);
+    } catch (...) {
+        return(-1);
+    }
+
+    try {
+        doc["qos_info"] >> sub->qos_info;
+        doc["cos_map_entries"] >> sub->cos_map_entries;
+        doc["dscp_map_entries"] >> sub->dscp_map_entries;
+        doc["queue_profile_entries"] >> sub->queue_profile_entries;
+        doc["schedule_profile_entries"] >> sub->schedule_profile_entries;
+    } catch (YAML::RepresentationException &re) {
+        return(-1);
+    } catch (...) {
+        return(-1);
+    }
+
+    return(0);
+}
+
+extern "C" YamlQosInfo *
+yaml_get_qos_info(YamlConfigHandle handle, const char *subsyst)
+{
+    YamlConfigHandlePrivate *priv_handle = (YamlConfigHandlePrivate *)handle;
+
+    YamlSubsystem *sub = NULL;
+    string sub_str = subsyst;
+    try {
+        sub = priv_handle->subsystem_map.at(sub_str);
+    } catch(...) {
+        return(NULL);
+    }
+
+    return(&sub->qos_info);
+}
+
+extern "C" int
+yaml_get_cos_map_entry_count(YamlConfigHandle handle, const char *subsyst)
+{
+    YamlConfigHandlePrivate *priv_handle = (YamlConfigHandlePrivate *)handle;
+
+    YamlSubsystem *sub = NULL;
+    string sub_str = subsyst;
+    try {
+        sub = priv_handle->subsystem_map.at(sub_str);
+    } catch(...) {
+        return(-1);
+    }
+
+    return(sub->cos_map_entries.size());
+}
+
+extern "C" int
+yaml_get_dscp_map_entry_count(YamlConfigHandle handle, const char *subsyst)
+{
+    YamlConfigHandlePrivate *priv_handle = (YamlConfigHandlePrivate *)handle;
+
+    YamlSubsystem *sub = NULL;
+    string sub_str = subsyst;
+    try {
+        sub = priv_handle->subsystem_map.at(sub_str);
+    } catch(...) {
+        return(-1);
+    }
+
+    return(sub->dscp_map_entries.size());
+}
+
+extern "C" int
+yaml_get_schedule_profile_entry_count(YamlConfigHandle handle, const char *subsyst)
+{
+    YamlConfigHandlePrivate *priv_handle = (YamlConfigHandlePrivate *)handle;
+
+    YamlSubsystem *sub = NULL;
+    string sub_str = subsyst;
+    try {
+        sub = priv_handle->subsystem_map.at(sub_str);
+    } catch(...) {
+        return(-1);
+    }
+
+    return(sub->schedule_profile_entries.size());
+}
+
+extern "C" int
+yaml_get_queue_profile_entry_count(YamlConfigHandle handle, const char *subsyst)
+{
+    YamlConfigHandlePrivate *priv_handle = (YamlConfigHandlePrivate *)handle;
+
+    YamlSubsystem *sub = NULL;
+    string sub_str = subsyst;
+    try {
+        sub = priv_handle->subsystem_map.at(sub_str);
+    } catch(...) {
+        return(-1);
+    }
+
+    return(sub->queue_profile_entries.size());
+}
+
+extern "C" const YamlCosMapEntry *
+yaml_get_cos_map_entry(YamlConfigHandle handle,
+                       const char *subsyst, unsigned int idx)
+{
+    YamlConfigHandlePrivate *priv_handle = (YamlConfigHandlePrivate *)handle;
+
+    YamlSubsystem *sub = NULL;
+    string sub_str = subsyst;
+    try {
+        sub = priv_handle->subsystem_map.at(sub_str);
+    } catch(...) {
+        return(NULL);
+    }
+
+    if ((size_t)idx >= sub->cos_map_entries.size()) {
+        return(NULL);
+    }
+    return(&sub->cos_map_entries[idx]);
+}
+
+extern "C" const YamlDscpMapEntry *
+yaml_get_dscp_map_entry(YamlConfigHandle handle,
+                        const char *subsyst, unsigned int idx)
+{
+    YamlConfigHandlePrivate *priv_handle = (YamlConfigHandlePrivate *)handle;
+
+    YamlSubsystem *sub = NULL;
+    string sub_str = subsyst;
+    try {
+        sub = priv_handle->subsystem_map.at(sub_str);
+    } catch(...) {
+        return(NULL);
+    }
+
+    if ((size_t)idx >= sub->dscp_map_entries.size()) {
+        return(NULL);
+    }
+    return(&sub->dscp_map_entries[idx]);
+}
+
+extern "C" const YamlScheduleProfileEntry *
+yaml_get_schedule_profile_entry(YamlConfigHandle handle,
+                                const char *subsyst, unsigned int idx)
+{
+    YamlConfigHandlePrivate *priv_handle = (YamlConfigHandlePrivate *)handle;
+
+    YamlSubsystem *sub = NULL;
+    string sub_str = subsyst;
+    try {
+        sub = priv_handle->subsystem_map.at(sub_str);
+    } catch(...) {
+        return(NULL);
+    }
+
+    if ((size_t)idx >= sub->schedule_profile_entries.size()) {
+        return(NULL);
+    }
+    return(&sub->schedule_profile_entries[idx]);
+}
+
+extern "C" const YamlQueueProfileEntry *
+yaml_get_queue_profile_entry(YamlConfigHandle handle,
+                             const char *subsyst, unsigned int idx)
+{
+    YamlConfigHandlePrivate *priv_handle = (YamlConfigHandlePrivate *)handle;
+
+    YamlSubsystem *sub = NULL;
+    string sub_str = subsyst;
+    try {
+        sub = priv_handle->subsystem_map.at(sub_str);
+    } catch(...) {
+        return(NULL);
+    }
+
+    if ((size_t)idx >= sub->queue_profile_entries.size()) {
+        return(NULL);
+    }
+    return(&sub->queue_profile_entries[idx]);
+}
+/*======*/
+/*======*/
 
 extern "C" YamlConfigHandle
 yaml_new_config_handle(void)

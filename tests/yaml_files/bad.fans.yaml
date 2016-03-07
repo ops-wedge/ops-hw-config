@@ -1,0 +1,211 @@
+# (c) Copyright 2015 Hewlett Packard Enterprise Development LP
+#
+#    Licensed under the Apache License, Version 2.0 (the "License"); you may
+#    not use this file except in compliance with the License. You may obtain
+#    a copy of the License at
+#
+#         http://www.apache.org/licenses/LICENSE-2.0
+#
+#    Unless required by applicable law or agreed to in writing, software
+#    distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+#    WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+#    License for the specific language governing permissions and limitations
+#    under the License.
+#
+#  BAD Fans Description File for CFG_YAML unit testing.
+
+manufacturer:    HPE
+product_name:    UNIT_TEST
+version:         '1'
+
+# import or reference devices list here
+
+fan_info:
+#
+# There are 5 fan FRUs listed below. Let's give a wrong number here.
+#
+     number_fan_frus:   6   #  5 controllable fan frus
+
+     fan_speed_control_type:   SINGLE             # SINGLE or PER_FAN
+     fan_speed_control:
+             device:    cpld1
+             register:  0x0D
+             bitmask:   0x1F
+     fan_speed_min:            SLOW
+     fan_speed_settings:
+           SLOW:    0x05     #   25% speed
+           NORMAL:  0x08     #   40% speed
+           MEDIUM:  0x0D     #   65% speed
+           FAST:    0x10     #   80% speed
+           MAX:     0x14     #  100% speed
+
+     fan_direction:  FIXED   #  F2B, B2F, SETTABLE, FIXED
+#    fan_direction_control:    # Not needed as FIXED
+#           device:
+#           register:
+#           bitmask:
+#    fan_direction_control_values:
+#           F2B:  0x0
+#           B2F:  0x1
+     fan_direction_values:
+            F2B:  0x0
+            B2F:  0x1
+     fan_speed_multiplier:   150
+     fan_led_values:
+           OFF:    0x0
+           GOOD:   0x1
+           FAULT:  0x2
+
+fan_frus:
+   -   number:          1
+       fan_leds:
+            device:     cpld1
+            register:   0x16
+            bitmask:    0x03
+       fan_direction_detect:
+            device:     cpld1
+            register:   0x1E
+            bitmask:    0x01
+       fans:
+           -   name:   "FAN 1L"
+               fault:
+                   device:     cpld1
+                   register:   0x0C
+                   bitmask:    0x01
+               speed:
+                   device:     cpld1
+                   register:   0x10
+                   bitmask:    0xFF
+
+           -   name:   "FAN 1R"
+               fault:
+                   device:     cpld1
+                   register:   0x1F
+                   bitmask:    0x01
+               speed:
+                   device:     cpld1
+                   register:   0x18
+                   bitmask:    0xFF
+
+   -   number:          2
+#
+# Let's misspell "fan_leds"
+#
+       fan_ledss:
+            device:     cpld1
+            register:   0x16
+            bitmask:    0x0C
+       fan_direction_detect:
+            device:     cpld1
+            register:   0x1E
+            bitmask:    0x02
+       fans:
+           -   name:   "FAN 2L"
+               fault:
+                   device:     cpld1
+                   register:   0x0C
+                   bitmask:    0x02
+               speed:
+                   device:     cpld1
+                   register:   0x11
+                   bitmask:    0xFF
+
+           -   name:   "FAN 2R"
+               fault:
+                   device:     cpld1
+                   register:   0x1F
+                   bitmask:    0x02
+               speed:
+                   device:     cpld1
+                   register:   0x19
+                   bitmask:    0xFF
+
+   -   number:          3
+       fan_leds:
+            device:     cpld1
+            register:   0x16
+            bitmask:    0x30
+       fan_direction_detect:
+            device:     cpld1
+            register:   0x1E
+            bitmask:    0x04
+       fans:
+           -   name:   "FAN 3L"
+               fault:
+                   device:     cpld1
+                   register:   0x0C
+                   bitmask:    0x04
+               speed:
+                   device:     cpld1
+                   register:   0x12
+                   bitmask:    0xFF
+
+           -   name:   "FAN 3R"
+               fault:
+                   device:     cpld1
+                   register:   0x1F
+                   bitmask:    0x04
+               speed:
+                   device:     cpld1
+                   register:   0x1A
+                   bitmask:    0xFF
+
+   -   number:          4
+       fan_leds:
+            device:     cpld1
+            register:   0x16
+            bitmask:    0xC0
+       fan_direction_detect:
+            device:     cpld1
+            register:   0x1E
+            bitmask:    0x08
+       fans:
+           -   name:   "FAN 4L"
+               fault:
+                   device:     cpld1
+                   register:   0x0C
+                   bitmask:    0x08
+               speed:
+                   device:     cpld1
+                   register:   0x13
+                   bitmask:    0xFF
+
+           -   name:   "FAN 4R"
+               fault:
+                   device:     cpld1
+                   register:   0x1F
+                   bitmask:    0x08
+               speed:
+                   device:     cpld1
+                   register:   0x1B
+                   bitmask:    0xFF
+
+   -   number:          5
+       fan_leds:
+            device:     cpld1
+            register:   0x17
+            bitmask:    0x03
+       fan_direction_detect:
+            device:     cpld1
+            register:   0x1E
+            bitmask:    0x10
+       fans:
+           -   name:   "FAN 5L"
+               fault:
+                   device:     cpld1
+                   register:   0x0C
+                   bitmask:    0x10
+               speed:
+                   device:     cpld1
+                   register:   0x14
+                   bitmask:    0xFF
+
+           -   name:   "FAN 5R"
+               fault:
+                   device:     cpld1
+                   register:   0x1F
+                   bitmask:    0x10
+               speed:
+                   device:     cpld1
+                   register:   0x1C
+                   bitmask:    0xFF

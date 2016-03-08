@@ -1,0 +1,49 @@
+# (c) Copyright 2016 Hewlett Packard Enterprise Development LP
+#
+#    Licensed under the Apache License, Version 2.0 (the "License"); you may
+#    not use this file except in compliance with the License. You may obtain
+#    a copy of the License at
+#
+#         http://www.apache.org/licenses/LICENSE-2.0
+#
+#    Unless required by applicable law or agreed to in writing, software
+#    distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+#    WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+#    License for the specific language governing permissions and limitations
+#    under the License.
+
+
+##########################################################
+#							 #
+# This file describes the plugin initialization priority #
+#							 #
+##########################################################
+
+# EXAMPLE:
+#
+# - plugin_A
+# - plugin_B
+# - plugin_C
+# - plugin_A
+# - plugin_A
+# - plugin_D
+#
+# Plugins can be initialized in a configured order.
+#
+# The plugin init ordering is defined by the platform maintainer.
+#
+# Plugins can be initialized in phases: first initialize part a,
+# wait for another plugin to initialize, then init part b, wait ...
+#
+# If a Plugin that is referenced in the initialization sequence is not present
+# then it will be ignored and will continue with the next one in the list
+#
+# If a detected Plugin is not in the initialization list then it will be added
+# to the bottom of the init sequence and only executed once (phase_id 0)
+#
+# If a Plugin is listed more than once in the initialization list then the
+# init function will get called multiple times in the proper order, but each
+# time it will pass a higher int phase_id value to express to the plugin which
+# phase it should initialize.
+
+- libswitchd_stp_plugin

@@ -1,0 +1,229 @@
+# Copyright (C) 2014-2015 Accton Technology Corporation
+# All Rights Reserved.
+#
+#    Licensed under the Apache License, Version 2.0 (the "License"); you may
+#    not use this file except in compliance with the License. You may obtain
+#    a copy of the License at
+#
+#         http://www.apache.org/licenses/LICENSE-2.0
+#
+#    Unless required by applicable law or agreed to in writing, software
+#    distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+#    WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+#    License for the specific language governing permissions and limitations
+#    under the License.
+#
+#  Fans Description File for Accton 7512 Switch.
+#  Based on AS6712 description file.
+
+manufacturer:    Accton
+product_name:    AS7512-32X
+version:         '1'
+
+# import or reference devices list here
+
+fan_info:
+     number_fan_frus:   6   #  6 controllable fan frus
+
+     fan_speed_control_type:   SINGLE             # SINGLE or PER_FAN
+     fan_speed_control:
+             device:    fan_cpld
+             register:  0x32
+             bitmask:   0x0F
+     fan_speed_min:            SLOW
+     fan_speed_settings:
+           SLOW:    0x05     #   06*6.25%=37.5%  speed
+           NORMAL:  0x07     #   08*6.25%=50%    speed
+           MEDIUM:  0x0A     #   11*6.25%=68.75% speed
+           FAST:    0x0D     #   14*6.25%=87.5%  speed
+           MAX:     0x0F     #   16*6.25%=100%   speed
+
+     fan_direction:  FIXED   #  F2B, B2F, SETTABLE, FIXED
+     fan_direction_values:
+            F2B:  0x1
+            B2F:  0x0
+     fan_speed_multiplier:   150
+     fan_led_values:
+           OFF:    0x0
+           GOOD:   0x1
+           FAULT:  0x2
+
+fan_frus:
+   -   number:          1
+       fan_leds:
+            device:     fan_cpld
+            register:   0x1C
+            bitmask:    0xC0
+       fan_direction_detect:
+            device:     fan_cpld
+            register:   0x10
+            bitmask:    0x01
+       fans:
+           -   name:   "1L"
+               fault:
+                   device:     fan_cpld
+                   register:   0x0F
+                   bitmask:    0x01
+               speed:
+                   device:     fan_cpld
+                   register:   0x12
+                   bitmask:    0xFF
+
+           -   name:   "1R"
+               fault:
+                   device:     fan_cpld
+                   register:   0x0F
+                   bitmask:    0x01
+               speed:
+                   device:     fan_cpld
+                   register:   0x22
+                   bitmask:    0xFF
+
+   -   number:          2
+       fan_leds:
+            device:     fan_cpld
+            register:   0x1C
+            bitmask:    0x30
+       fan_direction_detect:
+            device:     fan_cpld
+            register:   0x10
+            bitmask:    0x02
+       fans:
+           -   name:   "2L"
+               fault:
+                   device:     fan_cpld
+                   register:   0x0F
+                   bitmask:    0x02
+               speed:
+                   device:     fan_cpld
+                   register:   0x13
+                   bitmask:    0xFF
+
+           -   name:   "2R"
+               fault:
+                   device:     fan_cpld
+                   register:   0x0F
+                   bitmask:    0x02
+               speed:
+                   device:     fan_cpld
+                   register:   0x23
+                   bitmask:    0xFF
+
+   -   number:          3
+       fan_leds:
+            device:     fan_cpld
+            register:   0x1C
+            bitmask:    0x0C
+       fan_direction_detect:
+            device:     fan_cpld
+            register:   0x10
+            bitmask:    0x04
+       fans:
+           -   name:   "3L"
+               fault:
+                   device:     fan_cpld
+                   register:   0x0F
+                   bitmask:    0x04
+               speed:
+                   device:     fan_cpld
+                   register:   0x14
+                   bitmask:    0xFF
+
+           -   name:   "3R"
+               fault:
+                   device:     fan_cpld
+                   register:   0x0F
+                   bitmask:    0x04
+               speed:
+                   device:     fan_cpld
+                   register:   0x24
+                   bitmask:    0xFF
+
+   -   number:          4
+       fan_leds:
+            device:     fan_cpld
+            register:   0x1C
+            bitmask:    0x03
+       fan_direction_detect:
+            device:     fan_cpld
+            register:   0x10
+            bitmask:    0x08
+       fans:
+           -   name:   "4L"
+               fault:
+                   device:     fan_cpld
+                   register:   0x0F
+                   bitmask:    0x08
+               speed:
+                   device:     fan_cpld
+                   register:   0x15
+                   bitmask:    0xFF
+
+           -   name:   "4R"
+               fault:
+                   device:     fan_cpld
+                   register:   0x0F
+                   bitmask:    0x08
+               speed:
+                   device:     fan_cpld
+                   register:   0x25
+                   bitmask:    0xFF
+
+   -   number:          5
+       fan_leds:
+            device:     fan_cpld
+            register:   0x1D
+            bitmask:    0x0C
+       fan_direction_detect:
+            device:     fan_cpld
+            register:   0x10
+            bitmask:    0x10
+       fans:
+           -   name:   "5L"
+               fault:
+                   device:     fan_cpld
+                   register:   0x0F
+                   bitmask:    0x10
+               speed:
+                   device:     fan_cpld
+                   register:   0x16
+                   bitmask:    0xFF
+
+           -   name:   "5R"
+               fault:
+                   device:     fan_cpld
+                   register:   0x0F
+                   bitmask:    0x10
+               speed:
+                   device:     fan_cpld
+                   register:   0x26
+                   bitmask:    0xFF
+   -   number:          6
+       fan_leds:
+            device:     fan_cpld
+            register:   0x1D
+            bitmask:    0x03
+       fan_direction_detect:
+            device:     fan_cpld
+            register:   0x10
+            bitmask:    0x20
+       fans:
+           -   name:   "6L"
+               fault:
+                   device:     fan_cpld
+                   register:   0x0F
+                   bitmask:    0x20
+               speed:
+                   device:     fan_cpld
+                   register:   0x17
+                   bitmask:    0xFF
+
+           -   name:   "6R"
+               fault:
+                   device:     fan_cpld
+                   register:   0x0F
+                   bitmask:    0x20
+               speed:
+                   device:     fan_cpld
+                   register:   0x27
+                   bitmask:    0xFF

@@ -1,0 +1,52 @@
+# Copyright (C) 2014-2015 Accton Technology Corporation
+# All Rights Reserved.
+#
+#    Licensed under the Apache License, Version 2.0 (the "License"); you may
+#    not use this file except in compliance with the License. You may obtain
+#    a copy of the License at
+#
+#         http://www.apache.org/licenses/LICENSE-2.0
+#
+#    Unless required by applicable law or agreed to in writing, software
+#    distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+#    WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+#    License for the specific language governing permissions and limitations
+#    under the License.
+#
+#  Hardward Description Manifest File for Accton 7512 Switch.
+#  Based on the AS6712 description file.
+
+# The manifest file (this file) is the one required file for a subsystem
+# and must be named "manifest.yaml".
+
+manufacturer:    Accton
+product_name:    7512-32X
+version:         '1'
+
+subsystem_info: |
+    The Accton AS7512_32X OCP compliant whitebox switch has the
+    following devices...
+    32x100G QSFP28 ports, 6 fans, 2 power supplies,
+    leds for diagnostics and location, and 3 thermal sensors.
+
+# Each hw description file must be listed below else it won't be processed.
+# If a file is listed, and isn't present, it is considered an error.
+# If a daemon looks for a particular file, and it isn't listed, it is
+# consider not an error and indicates that this subsystem does not
+# have any of that type of h/w.
+
+files:
+    -   name:       manifest
+        filename:   manifest.yaml
+    -   name:       devices
+        filename:   devices.yaml
+    -   name:       fans
+        filename:   fans.yaml
+    -   name:       leds
+        filename:   leds.yaml
+    -   name:       ports
+        filename:   ports.yaml
+    -   name:       power
+        filename:   power.yaml
+    -   name:       thermal
+        filename:   thermal.yaml

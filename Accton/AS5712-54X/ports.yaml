@@ -367,7 +367,7 @@ ports:
                 bitmask:    0x02
              sfpp_mod_present:
                 device:     cpld2
-                register:   0x08
+                register:   0x07
                 bitmask:    0x02
                 polarity:   negative
              sfpp_interrupt:
@@ -1183,7 +1183,7 @@ ports:
                 bitmask:    0x02
              sfpp_mod_present:
                 device:     cpld3
-                register:   0x08
+                register:   0x07
                 bitmask:    0x02
                 polarity:   negative
              sfpp_interrupt:

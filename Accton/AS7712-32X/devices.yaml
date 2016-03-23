@@ -1,0 +1,617 @@
+# Copyright (C) 2014-2016 Accton Technology Corporation
+# All Rights Reserved.
+#
+#    Licensed under the Apache License, Version 2.0 (the "License"); you may
+#    not use this file except in compliance with the License. You may obtain
+#    a copy of the License at
+#
+#         http://www.apache.org/licenses/LICENSE-2.0
+#
+#    Unless required by applicable law or agreed to in writing, software
+#    distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+#    WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+#    License for the specific language governing permissions and limitations
+#    under the License.
+#
+#  Devices Description File for Accton 7712 Switch.
+#  Based on the AS6712 description file.
+
+manufacturer:    Accton
+product_name:    AS7712-32X
+version:         '1'
+
+buses:
+    -   name:       i2c_0
+        dev_name:   /dev/i2c-3
+        smbus:      true
+    -   name:       i2c_1
+        dev_name:   /dev/i2c-4
+        smbus:      true
+
+devices:    # just device relevant to platform code are listed
+    -   name:       sodimm_ch0
+        bus:        i2c_0
+        dev_type:   sodimm_spd_eeprom
+        address:    0x52
+    -   name:       sodimm_ch1
+        bus:        i2c_0
+        dev_type:   sodimm_spd_eeprom
+        address:    0x53
+    -   name:       clkgen
+        bus:        i2c_0
+        dev_type:   clkgen
+        address:    0x69
+    -   name:       isl9027
+        bus:        i2c_0
+        dev_type:   potentmeter
+        address:    0x2E
+    -   name:       i2c_mux1
+        bus:        i2c_0
+        dev_type:   i2c_mux
+        address:    0x76
+#    -   name:       io_expander
+#        bus:        i2c_0
+#        dev_type:   io_expander
+#        address:    0x27
+#        pre:
+#            - device:   i2c_mux1
+#              register: NONE
+#              data:     [ 0x01 ]
+#        post:
+#            - device:   i2c_mux1
+#              register: NONE
+#              data:     [ 0x00 ]
+    -   name:       fan_cpld
+        bus:        i2c_0
+        dev_type:   cpld
+        address:    0x66
+        pre:
+            - device:   i2c_mux1
+              register: NONE
+              data:     [ 0x01 ]
+        post:
+            - device:   i2c_mux1
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       tmp1
+        bus:        i2c_0
+        dev_type:   lm75
+        address:    0x48
+        pre:
+            - device:   i2c_mux1
+              register: NONE
+              data:     [ 0x02 ]
+        post:
+            - device:   i2c_mux1
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       tmp2
+        bus:        i2c_0
+        dev_type:   lm75
+        address:    0x49
+        pre:
+            - device:   i2c_mux1
+              register: NONE
+              data:     [ 0x02 ]
+        post:
+            - device:   i2c_mux1
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       tmp3
+        bus:        i2c_0
+        dev_type:   lm75
+        address:    0x4A
+        pre:
+            - device:   i2c_mux1
+              register: NONE
+              data:     [ 0x02 ]
+        post:
+            - device:   i2c_mux1
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       tmp4
+        bus:        i2c_0
+        dev_type:   lm75
+        address:    0x4B
+        pre:
+            - device:   i2c_mux1
+              register: NONE
+              data:     [ 0x02 ]
+        post:
+            - device:   i2c_mux1
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       cpld1
+        bus:        i2c_0
+        dev_type:   cpld
+        address:    0x60
+        pre:
+            - device:   i2c_mux1
+              register: NONE
+              data:     [ 0x04 ]
+        post:
+            - device:   i2c_mux1
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       cpld2
+        bus:        i2c_0
+        dev_type:   cpld
+        address:    0x62
+        pre:
+            - device:   i2c_mux1
+              register: NONE
+              data:     [ 0x08 ]
+        post:
+            - device:   i2c_mux1
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       cpld3
+        bus:        i2c_0
+        dev_type:   cpld
+        address:    0x64
+        pre:
+            - device:   i2c_mux1
+              register: NONE
+              data:     [ 0x10 ]
+        post:
+            - device:   i2c_mux1
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       fru_eeprom
+        bus:        i2c_1
+        dev_type:   fru_eeprom
+        address:    0x57
+    -   name:       i2c_mux2
+        bus:        i2c_1
+        dev_type:   i2c_mux
+        address:    0x71
+    -   name:       psu1
+        bus:        i2c_1
+        dev_type:   power_supply
+        address:    0x58
+        pre:
+            - device:   i2c_mux2
+              register: NONE
+              data:     [ 0x01 ]
+        post:
+            - device:   i2c_mux2
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       psu2
+        bus:        i2c_1
+        dev_type:   power_supply
+        address:    0x5B
+        pre:
+            - device:   i2c_mux2
+              register: NONE
+              data:     [ 0x02 ]
+        post:
+            - device:   i2c_mux2
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       usbhub_reserved
+        bus:        i2c_1
+        dev_type:   usbhub
+        address:    0x50
+        pre:
+            - device:   i2c_mux2
+              register: NONE
+              data:     [ 0x40 ]
+        post:
+            - device:   i2c_mux2
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       i2c_mux3
+        bus:        i2c_1
+        dev_type:   i2c_mux
+        address:    0x72
+    -   name:       qsfp28p9
+        bus:        i2c_1
+        dev_type:   qsfp28p
+        address:    0x50
+        pre:
+             - device:   i2c_mux3
+               register: NONE
+               data:     [ 0x01 ]
+        post:
+             - device:   i2c_mux3
+               register: NONE
+               data:     [ 0x00 ]
+    -   name:       qsfp28p10
+        bus:        i2c_1
+        dev_type:   qsfp28p
+        address:    0x50
+        pre:
+            - device:   i2c_mux3
+              register: NONE
+              data:     [ 0x02 ]
+        post:
+            - device:   i2c_mux3
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       qsfp28p11
+        bus:        i2c_1
+        dev_type:   qsfp28p
+        address:    0x50
+        pre:
+            - device:   i2c_mux3
+              register: NONE
+              data:     [ 0x04 ]
+        post:
+            - device:   i2c_mux3
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       qsfp28p12
+        bus:        i2c_1
+        dev_type:   qsfp28p
+        address:    0x50
+        pre:
+            - device:   i2c_mux3
+              register: NONE
+              data:     [ 0x08 ]
+        post:
+            - device:   i2c_mux3
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       qsfp28p1
+        bus:        i2c_1
+        dev_type:   qsfp28p
+        address:    0x50
+        pre:
+            - device:   i2c_mux3
+              register: NONE
+              data:     [ 0x10 ]
+        post:
+            - device:   i2c_mux3
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       qsfp28p2
+        bus:        i2c_1
+        dev_type:   qsfp28p
+        address:    0x50
+        pre:
+            - device:   i2c_mux3
+              register: NONE
+              data:     [ 0x20 ]
+        post:
+           - device:   i2c_mux3
+             register: NONE
+             data:     [ 0x00 ]
+    -   name:       qsfp28p3
+        bus:        i2c_1
+        dev_type:   qsfp28p
+        address:    0x50
+        pre:
+            - device:   i2c_mux3
+              register: NONE
+              data:     [ 0x40 ]
+        post:
+            - device:   i2c_mux3
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       qsfp28p4
+        bus:        i2c_1
+        dev_type:   qsfp28p
+        address:    0x50
+        pre:
+            - device:   i2c_mux3
+              register: NONE
+              data:     [ 0x80 ]
+        post:
+            - device:   i2c_mux3
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       i2c_mux4
+        bus:        i2c_1
+        dev_type:   i2c_mux
+        address:    0x73
+    -   name:       qsfp28p6
+        bus:        i2c_1
+        dev_type:   qsfp28p
+        address:    0x50
+        pre:
+            - device:   i2c_mux4
+              register: NONE
+              data:     [ 0x01 ]
+        post:
+            - device:   i2c_mux4
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       qsfp28p5
+        bus:        i2c_1
+        dev_type:   qsfp28p
+        address:    0x50
+        pre:
+            - device:   i2c_mux4
+              register: NONE
+              data:     [ 0x02 ]
+        post:
+            - device:   i2c_mux4
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       qsfp28p8
+        bus:        i2c_1
+        dev_type:   qsfp28p
+        address:    0x50
+        pre:
+            - device:   i2c_mux4
+              register: NONE
+              data:     [ 0x04 ]
+        post:
+            - device:   i2c_mux4
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       qsfp28p7
+        bus:        i2c_1
+        dev_type:   qsfp28p
+        address:    0x50
+        pre:
+            - device:   i2c_mux4
+              register: NONE
+              data:     [ 0x08 ]
+        post:
+            - device:   i2c_mux4
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       qsfp28p13
+        bus:        i2c_1
+        dev_type:   qsfp28p
+        address:    0x50
+        pre:
+            - device:   i2c_mux4
+              register: NONE
+              data:     [ 0x10 ]
+        post:
+            - device:   i2c_mux4
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       qsfp28p14
+        bus:        i2c_1
+        dev_type:   qsfp28p
+        address:    0x50
+        pre:
+            - device:   i2c_mux4
+              register: NONE
+              data:     [ 0x20 ]
+        post:
+            - device:   i2c_mux4
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       qsfp28p15
+        bus:        i2c_1
+        dev_type:   qsfp28p
+        address:    0x50
+        pre:
+            - device:   i2c_mux4
+              register: NONE
+              data:     [ 0x40 ]
+        post:
+            - device:   i2c_mux4
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       qsfp28p16
+        bus:        i2c_1
+        dev_type:   qsfp28p
+        address:    0x50
+        pre:
+            - device:   i2c_mux4
+              register: NONE
+              data:     [ 0x80 ]
+        post:
+            - device:   i2c_mux4
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       i2c_mux5
+        bus:        i2c_1
+        dev_type:   i2c_mux
+        address:    0x74
+    -   name:       qsfp28p17
+        bus:        i2c_1
+        dev_type:   qsfp28p
+        address:    0x50
+        pre:
+            - device:   i2c_mux5
+              register: NONE
+              data:     [ 0x01 ]
+        post:
+            - device:   i2c_mux5
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       qsfp28p18
+        bus:        i2c_1
+        dev_type:   qsfp28p
+        address:    0x50
+        pre:
+            - device:   i2c_mux5
+              register: NONE
+              data:     [ 0x02 ]
+        post:
+            - device:   i2c_mux5
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       qsfp28p19
+        bus:        i2c_1
+        dev_type:   qsfp28p
+        address:    0x50
+        pre:
+            - device:   i2c_mux5
+              register: NONE
+              data:     [ 0x04 ]
+        post:
+            - device:   i2c_mux5
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       qsfp28p20
+        bus:        i2c_1
+        dev_type:   qsfp28p
+        address:    0x50
+        pre:
+            - device:   i2c_mux5
+              register: NONE
+              data:     [ 0x08 ]
+        post:
+            - device:   i2c_mux5
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       qsfp28p25
+        bus:        i2c_1
+        dev_type:   qsfp28p
+        address:    0x50
+        pre:
+            - device:   i2c_mux5
+              register: NONE
+              data:     [ 0x10 ]
+        post:
+            - device:   i2c_mux5
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       qsfp28p26
+        bus:        i2c_1
+        dev_type:   qsfp28p
+        address:    0x50
+        pre:
+            - device:   i2c_mux5
+              register: NONE
+              data:     [ 0x20 ]
+        post:
+            - device:   i2c_mux5
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       qsfp28p27
+        bus:        i2c_1
+        dev_type:   qsfp28p
+        address:    0x50
+        pre:
+            - device:   i2c_mux5
+              register: NONE
+              data:     [ 0x40 ]
+        post:
+            - device:   i2c_mux5
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       qsfp28p28
+        bus:        i2c_1
+        dev_type:   qsfp28p
+        address:    0x50
+        pre:
+            - device:   i2c_mux5
+              register: NONE
+              data:     [ 0x80 ]
+        post:
+            - device:   i2c_mux5
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       i2c_mux6
+        bus:        i2c_1
+        dev_type:   i2c_mux
+        address:    0x75
+    -   name:       qsfp28p29
+        bus:        i2c_1
+        dev_type:   qsfp28p
+        address:    0x50
+        pre:
+            - device:   i2c_mux6
+              register: NONE
+              data:     [ 0x01 ]
+        post:
+            - device:   i2c_mux6
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       qsfp28p30
+        bus:        i2c_1
+        dev_type:   qsfp28p
+        address:    0x50
+        pre:
+            - device:   i2c_mux6
+              register: NONE
+              data:     [ 0x02 ]
+        post:
+            - device:   i2c_mux6
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       qsfp28p31
+        bus:        i2c_1
+        dev_type:   qsfp28p
+        address:    0x50
+        pre:
+            - device:   i2c_mux6
+              register: NONE
+              data:     [ 0x04 ]
+        post:
+            - device:   i2c_mux6
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       qsfp28p32
+        bus:        i2c_1
+        dev_type:   qsfp28p
+        address:    0x50
+        pre:
+            - device:   i2c_mux6
+              register: NONE
+              data:     [ 0x08 ]
+        post:
+            - device:   i2c_mux6
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       qsfp28p21
+        bus:        i2c_1
+        dev_type:   qsfp28p
+        address:    0x50
+        pre:
+            - device:   i2c_mux6
+              register: NONE
+              data:     [ 0x10 ]
+        post:
+            - device:   i2c_mux6
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       qsfp28p22
+        bus:        i2c_1
+        dev_type:   qsfp28p
+        address:    0x50
+        pre:
+            - device:   i2c_mux6
+              register: NONE
+              data:     [ 0x20 ]
+        post:
+            - device:   i2c_mux6
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       qsfp28p23
+        bus:        i2c_1
+        dev_type:   qsfp28p
+        address:    0x50
+        pre:
+            - device:   i2c_mux6
+              register: NONE
+              data:     [ 0x40 ]
+        post:
+            - device:   i2c_mux6
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       qsfp28p24
+        bus:        i2c_1
+        dev_type:   qsfp28p
+        address:    0x50
+        pre:
+            - device:   i2c_mux6
+              register: NONE
+              data:     [ 0x80 ]
+        post:
+            - device:   i2c_mux6
+              register: NONE
+              data:     [ 0x00 ]
+
+init:
+    - device:   fan_cpld
+      register: NONE
+      data:     [ 0x00 ]
+    - device:   cpld2
+      register: NONE
+      data:     [ 0x00 ]
+    - device:   cpld3
+      register: NONE
+      data:     [ 0x00 ]
+    - device:   i2c_mux1
+      register: NONE
+      data:     [ 0x00 ]

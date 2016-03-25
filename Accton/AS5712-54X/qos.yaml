@@ -61,7 +61,7 @@ schedule_profile_entries:
 
 queue_profile_entries:
         -   queue:          0
-            description:    ""
+            description:    'Scavenger_and_backup_data'
             local_priority: 0
         -   queue:          1
             description:    ""
@@ -124,319 +124,255 @@ dscp_map_entries:
        color:          green
        description:    CS0
        local_priority: 0
-       priority_code_point: 1
    -   code_point:     1
        color:          green
        description:    ""
        local_priority: 0
-       priority_code_point: 1
    -   code_point:     2
        color:          green
        description:    ""
        local_priority: 0
-       priority_code_point: 1
    -   code_point:     3
        color:          green
        description:    ""
        local_priority: 0
-       priority_code_point: 1
    -   code_point:     4
        color:          green
        description:    ""
        local_priority: 0
-       priority_code_point: 1
    -   code_point:     5
        color:          green
        description:    ""
        local_priority: 0
-       priority_code_point: 1
    -   code_point:     6
        color:          green
        description:    ""
        local_priority: 0
-       priority_code_point: 1
    -   code_point:     7
        color:          green
        description:    ""
        local_priority: 0
-       priority_code_point: 1
    -   code_point:     8
        color:          green
        description:    CS1
        local_priority: 1
-       priority_code_point: 0
    -   code_point:     9
        color:          green
        description:    ""
        local_priority: 1
-       priority_code_point: 0
    -   code_point:     10
        color:          green
        description:    AF11
        local_priority: 1
-       priority_code_point: 0
    -   code_point:     11
        color:          green
        description:    ""
        local_priority: 1
-       priority_code_point: 0
    -   code_point:     12
        color:          yellow
        description:    AF12
        local_priority: 1
-       priority_code_point: 0
    -   code_point:     13
        color:          green
        description:    ""
        local_priority: 1
-       priority_code_point: 0
    -   code_point:     14
        color:          red
        description:    AF13
        local_priority: 1
-       priority_code_point: 0
    -   code_point:     15
        color:          green
        description:    ""
        local_priority: 1
-       priority_code_point: 0
    -   code_point:     16
        color:          green
        description:    CS2
        local_priority: 2
-       priority_code_point: 2
    -   code_point:     17
        color:          green
        description:    ""
        local_priority: 2
-       priority_code_point: 2
    -   code_point:     18
        color:          green
        description:    AF21
        local_priority: 2
-       priority_code_point: 2
    -   code_point:     19
        color:          green
        description:    ""
        local_priority: 2
-       priority_code_point: 2
    -   code_point:     20
        color:          yellow
        description:    AF22
        local_priority: 2
-       priority_code_point: 2
    -   code_point:     21
        color:          green
        description:    ""
        local_priority: 2
-       priority_code_point: 2
    -   code_point:     22
        color:          red
        description:    AF23
        local_priority: 2
-       priority_code_point: 2
    -   code_point:     23
        color:          green
        description:    ""
        local_priority: 2
-       priority_code_point: 2
    -   code_point:     24
        color:          green
        description:    CS3
        local_priority: 3
-       priority_code_point: 3
    -   code_point:     25
        color:          green
        description:    ""
        local_priority: 3
-       priority_code_point: 3
    -   code_point:     26
        color:          green
        description:    AF31
        local_priority: 3
-       priority_code_point: 3
    -   code_point:     27
        color:          green
        description:    ""
        local_priority: 3
-       priority_code_point: 3
    -   code_point:     28
        color:          yellow
        description:    AF32
        local_priority: 3
-       priority_code_point: 3
    -   code_point:     29
        color:          green
        description:    ""
        local_priority: 3
-       priority_code_point: 3
    -   code_point:     30
        color:          red
        description:    AF33
        local_priority: 3
-       priority_code_point: 3
    -   code_point:     31
        color:          green
        description:    ""
        local_priority: 3
-       priority_code_point: 3
    -   code_point:     32
        color:          green
        description:    CS4
        local_priority: 4
-       priority_code_point: 4
    -   code_point:     33
        color:          green
        description:    ""
        local_priority: 4
-       priority_code_point: 4
    -   code_point:     34
        color:          green
        description:    AF41
        local_priority: 4
-       priority_code_point: 4
    -   code_point:     35
        color:          green
        description:    ""
        local_priority: 4
-       priority_code_point: 4
    -   code_point:     36
        color:          yellow
        description:    AF42
        local_priority: 4
-       priority_code_point: 4
    -   code_point:     37
        color:          green
        description:    ""
        local_priority: 4
-       priority_code_point: 4
    -   code_point:     38
        color:          red
        description:    AF43
        local_priority: 4
-       priority_code_point: 4
    -   code_point:     39
        color:          green
        description:    ""
        local_priority: 4
-       priority_code_point: 4
    -   code_point:     40
        color:          green
        description:    CS5
        local_priority: 5
-       priority_code_point: 5
    -   code_point:     41
        color:          green
        description:    ""
        local_priority: 5
-       priority_code_point: 5
    -   code_point:     42
        color:          green
        description:    ""
        local_priority: 5
-       priority_code_point: 5
    -   code_point:     43
        color:          green
        description:    ""
        local_priority: 5
-       priority_code_point: 5
    -   code_point:     44
        color:          green
        description:    ""
        local_priority: 5
-       priority_code_point: 5
    -   code_point:     45
        color:          green
        description:    ""
        local_priority: 5
-       priority_code_point: 5
    -   code_point:     46
        color:          green
        description:    EF
        local_priority: 5
-       priority_code_point: 5
    -   code_point:     47
        color:          green
        description:    ""
        local_priority: 5
-       priority_code_point: 5
    -   code_point:     48
        color:          green
        description:    CS6
        local_priority: 6
-       priority_code_point: 6
    -   code_point:     49
        color:          green
        description:    ""
        local_priority: 6
-       priority_code_point: 6
    -   code_point:     50
        color:          green
        description:    ""
        local_priority: 6
-       priority_code_point: 6
    -   code_point:     51
        color:          green
        description:    ""
        local_priority: 6
-       priority_code_point: 6
    -   code_point:     52
        color:          green
        description:    ""
        local_priority: 6
-       priority_code_point: 6
    -   code_point:     53
        color:          green
        description:    ""
        local_priority: 6
-       priority_code_point: 6
    -   code_point:     54
        color:          green
        description:    ""
        local_priority: 6
-       priority_code_point: 6
    -   code_point:     55
        color:          green
        description:    ""
        local_priority: 6
-       priority_code_point: 6
    -   code_point:     56
        color:          green
        description:    CS7
        local_priority: 7
-       priority_code_point: 7
    -   code_point:     57
        color:          green
        description:    ""
        local_priority: 7
-       priority_code_point: 7
    -   code_point:     58
        color:          green
        description:    ""
        local_priority: 7
-       priority_code_point: 7
    -   code_point:     59
        color:          green
        description:    ""
        local_priority: 7
-       priority_code_point: 7
    -   code_point:     60
        color:          green
        description:    ""
        local_priority: 7
-       priority_code_point: 7
    -   code_point:     61
        color:          green
        description:    ""
        local_priority: 7
-       priority_code_point: 7
    -   code_point:     62
        color:          green
        description:    ""
        local_priority: 7
-       priority_code_point: 7
    -   code_point:     63
        color:          green
        description:    ""
        local_priority: 7
-       priority_code_point: 7

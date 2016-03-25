@@ -66,6 +66,11 @@ extern "C" {
 #define YAML_QOS_NAME "qos"           /*!< Name to identify qos file */
 #define YAML_THERMAL_NAME "thermal"   /*!< Name to identify thermal file */
 
+/**
+ * If defined, then the dscp map cos remark capability will be disabled.
+ */
+#define QOS_CAPABILITY_DSCP_MAP_COS_REMARK_DISABLED
+
 /************************************************************************//**
  * STRUCT that contains the content of the subsystem_info portion of the
  *    manifest.yaml file.
@@ -471,7 +476,11 @@ typedef struct {
     char    *color;         /*!< color */
     char    *description;   /*!< Entry description */
     int     local_priority; /*!< COS priority */
+#ifdef QOS_CAPABILITY_DSCP_MAP_COS_REMARK_DISABLED
+    /* Disabled for dill. */
+#else
     int     priority_code_point; /*!< Priority code point */
+#endif
 } YamlDscpMapEntry;
 
 /************************************************************************//**

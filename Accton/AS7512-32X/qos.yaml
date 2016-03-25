@@ -13,11 +13,11 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 #
-#  QoS Description File for Accton 6712 Switch
+#  QoS Description File for Accton 7512 Switch
 #
 
 manufacturer:    Accton
-product_name:    AS6712-32X
+product_name:    AS7512-32X
 version:         '1'
 
 qos_info:

@@ -26,6 +26,11 @@ using namespace std;
 #include "yaml-cpp/yaml.h"
 #include "config-yaml.h"
 
+/**
+ * If defined, then the dscp map cos remark capability will be disabled.
+ */
+#define QOS_CAPABILITY_DSCP_MAP_COS_REMARK_DISABLED
+
 #define QOS_MAX_STRING_LENGTH 64
 
 typedef struct {
@@ -1031,6 +1036,9 @@ static void operator >> (const YAML::Node &node, YamlDscpMapEntry &entry)
     node["local_priority"] >> str;
     entry.local_priority = strtol(str.c_str(), 0, 0);
 
+#ifdef QOS_CAPABILITY_DSCP_MAP_COS_REMARK_DISABLED
+    /* Disabled for dill. */
+#else
     node["priority_code_point"] >> str;
     entry.priority_code_point = strtol(str.c_str(), 0, 0);
     if (entry.priority_code_point < 0 || entry.priority_code_point > 7) {
@@ -1038,6 +1046,7 @@ static void operator >> (const YAML::Node &node, YamlDscpMapEntry &entry)
                 "config-yaml|ERR|Out of range value for priority code point: "
                 << entry.priority_code_point << std::endl;
     }
+#endif
 }
 
 static void operator >> (const YAML::Node &node, vector<YamlDscpMapEntry> &entries)

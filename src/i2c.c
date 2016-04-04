@@ -227,6 +227,9 @@ i2c_execute(
     rc = 0;
     final_rc = 0;
 
+
+    flock(fd, LOCK_EX);
+
     if (!bus->smbus) {
         msgbuf = (struct i2c_msg *)calloc(sizeof(struct i2c_msg), count);
 
@@ -253,8 +256,6 @@ i2c_execute(
 
         free(msgbuf);
     } else {
-        // This bus doesn't support i2c operations.
-        flock(fd, LOCK_EX);
 
         for (idx = 0; idx < count; idx++) {
             i2c_op *cmd = all_cmds[idx];
@@ -357,9 +358,8 @@ i2c_execute(
                 }
             }
         }
-
-        flock(fd, LOCK_UN);
     }
+    flock(fd, LOCK_UN);
 
     free(all_cmds);
 

@@ -704,6 +704,582 @@ devices:    # just device relevant to platform code are listed
             - device:   cpld3
               register: 0x02
               data:     [ 0xFF ]
+    -   name:       sfpp1_dom
+        bus:        i2c_0
+        dev_type:   sfpp
+        address:    0x51
+        pre:
+            - device:   cpld2
+              register: 0x02
+              data:     [ 0x00 ]
+        post:
+            - device:   cpld2
+              register: 0x02
+              data:     [ 0xFF ]
+    -   name:       sfpp2_dom
+        bus:        i2c_0
+        dev_type:   sfpp
+        address:    0x51
+        pre:
+            - device:   cpld2
+              register: 0x02
+              data:     [ 0x01 ]
+        post:
+            - device:   cpld2
+              register: 0x02
+              data:     [ 0xFF ]
+    -   name:       sfpp3_dom
+        bus:        i2c_0
+        dev_type:   sfpp
+        address:    0x51
+        pre:
+            - device:   cpld2
+              register: 0x02
+              data:     [ 0x02 ]
+        post:
+            - device:   cpld2
+              register: 0x02
+              data:     [ 0xFF ]
+    -   name:       sfpp4_dom
+        bus:        i2c_0
+        dev_type:   sfpp
+        address:    0x51
+        pre:
+            - device:   cpld2
+              register: 0x02
+              data:     [ 0x03 ]
+        post:
+            - device:   cpld2
+              register: 0x02
+              data:     [ 0xFF ]
+    -   name:       sfpp5_dom
+        bus:        i2c_0
+        dev_type:   sfpp
+        address:    0x51
+        pre:
+            - device:   cpld2
+              register: 0x02
+              data:     [ 0x04 ]
+        post:
+            - device:   cpld2
+              register: 0x02
+              data:     [ 0xFF ]
+    -   name:       sfpp6_dom
+        bus:        i2c_0
+        dev_type:   sfpp
+        address:    0x51
+        pre:
+            - device:   cpld2
+              register: 0x02
+              data:     [ 0x05 ]
+        post:
+            - device:   cpld2
+              register: 0x02
+              data:     [ 0xFF ]
+    -   name:       sfpp7_dom
+        bus:        i2c_0
+        dev_type:   sfpp
+        address:    0x51
+        pre:
+            - device:   cpld2
+              register: 0x02
+              data:     [ 0x06 ]
+        post:
+            - device:   cpld2
+              register: 0x02
+              data:     [ 0xFF ]
+    -   name:       sfpp8_dom
+        bus:        i2c_0
+        dev_type:   sfpp
+        address:    0x51
+        pre:
+            - device:   cpld2
+              register: 0x02
+              data:     [ 0x07 ]
+        post:
+            - device:   cpld2
+              register: 0x02
+              data:     [ 0xFF ]
+    -   name:       sfpp9_dom
+        bus:        i2c_0
+        dev_type:   sfpp
+        address:    0x51
+        pre:
+            - device:   cpld2
+              register: 0x02
+              data:     [ 0x08 ]
+        post:
+            - device:   cpld2
+              register: 0x02
+              data:     [ 0xFF ]
+    -   name:       sfpp10_dom
+        bus:        i2c_0
+        dev_type:   sfpp
+        address:    0x51
+        pre:
+            - device:   cpld2
+              register: 0x02
+              data:     [ 0x09 ]
+        post:
+            - device:   cpld2
+              register: 0x02
+              data:     [ 0xFF ]
+    -   name:       sfpp11_dom
+        bus:        i2c_0
+        dev_type:   sfpp
+        address:    0x51
+        pre:
+            - device:   cpld2
+              register: 0x02
+              data:     [ 0x0A ]
+        post:
+            - device:   cpld2
+              register: 0x02
+              data:     [ 0xFF ]
+    -   name:       sfpp12_dom
+        bus:        i2c_0
+        dev_type:   sfpp
+        address:    0x51
+        pre:
+            - device:   cpld2
+              register: 0x02
+              data:     [ 0x0B ]
+        post:
+            - device:   cpld2
+              register: 0x02
+              data:     [ 0xFF ]
+    -   name:       sfpp13_dom
+        bus:        i2c_0
+        dev_type:   sfpp
+        address:    0x51
+        pre:
+            - device:   cpld2
+              register: 0x02
+              data:     [ 0x0C ]
+        post:
+            - device:   cpld2
+              register: 0x02
+              data:     [ 0xFF ]
+    -   name:       sfpp14_dom
+        bus:        i2c_0
+        dev_type:   sfpp
+        address:    0x51
+        pre:
+            - device:   cpld2
+              register: 0x02
+              data:     [ 0x0D ]
+        post:
+            - device:   cpld2
+              register: 0x02
+              data:     [ 0xFF ]
+    -   name:       sfpp15_dom
+        bus:        i2c_0
+        dev_type:   sfpp
+        address:    0x51
+        pre:
+            - device:   cpld2
+              register: 0x02
+              data:     [ 0x0E ]
+        post:
+            - device:   cpld2
+              register: 0x02
+              data:     [ 0xFF ]
+    -   name:       sfpp16_dom
+        bus:        i2c_0
+        dev_type:   sfpp
+        address:    0x51
+        pre:
+            - device:   cpld2
+              register: 0x02
+              data:     [ 0x0F ]
+        post:
+            - device:   cpld2
+              register: 0x02
+              data:     [ 0xFF ]
+    -   name:       sfpp17_dom
+        bus:        i2c_0
+        dev_type:   sfpp
+        address:    0x51
+        pre:
+            - device:   cpld2
+              register: 0x02
+              data:     [ 0x10 ]
+        post:
+            - device:   cpld2
+              register: 0x02
+              data:     [ 0xFF ]
+    -   name:       sfpp18_dom
+        bus:        i2c_0
+        dev_type:   sfpp
+        address:    0x51
+        pre:
+            - device:   cpld2
+              register: 0x02
+              data:     [ 0x11 ]
+        post:
+            - device:   cpld2
+              register: 0x02
+              data:     [ 0xFF ]
+    -   name:       sfpp19_dom
+        bus:        i2c_0
+        dev_type:   sfpp
+        address:    0x51
+        pre:
+            - device:   cpld2
+              register: 0x02
+              data:     [ 0x12 ]
+        post:
+            - device:   cpld2
+              register: 0x02
+              data:     [ 0xFF ]
+    -   name:       sfpp20_dom
+        bus:        i2c_0
+        dev_type:   sfpp
+        address:    0x51
+        pre:
+            - device:   cpld2
+              register: 0x02
+              data:     [ 0x13 ]
+        post:
+            - device:   cpld2
+              register: 0x02
+              data:     [ 0xFF ]
+    -   name:       sfpp21_dom
+        bus:        i2c_0
+        dev_type:   sfpp
+        address:    0x51
+        pre:
+            - device:   cpld2
+              register: 0x02
+              data:     [ 0x14 ]
+        post:
+            - device:   cpld2
+              register: 0x02
+              data:     [ 0xFF ]
+    -   name:       sfpp22_dom
+        bus:        i2c_0
+        dev_type:   sfpp
+        address:    0x51
+        pre:
+            - device:   cpld2
+              register: 0x02
+              data:     [ 0x15 ]
+        post:
+            - device:   cpld2
+              register: 0x02
+              data:     [ 0xFF ]
+    -   name:       sfpp23_dom
+        bus:        i2c_0
+        dev_type:   sfpp
+        address:    0x51
+        pre:
+            - device:   cpld2
+              register: 0x02
+              data:     [ 0x16 ]
+        post:
+            - device:   cpld2
+              register: 0x02
+              data:     [ 0xFF ]
+    -   name:       sfpp24_dom
+        bus:        i2c_0
+        dev_type:   sfpp
+        address:    0x51
+        pre:
+            - device:   cpld2
+              register: 0x02
+              data:     [ 0x17 ]
+        post:
+            - device:   cpld2
+              register: 0x02
+              data:     [ 0xFF ]
+    -   name:       sfpp25_dom
+        bus:        i2c_0
+        dev_type:   sfpp
+        address:    0x51
+        pre:
+            - device:   cpld3
+              register: 0x02
+              data:     [ 0x00 ]
+        post:
+            - device:   cpld3
+              register: 0x02
+              data:     [ 0xFF ]
+    -   name:       sfpp26_dom
+        bus:        i2c_0
+        dev_type:   sfpp
+        address:    0x51
+        pre:
+            - device:   cpld3
+              register: 0x02
+              data:     [ 0x01 ]
+        post:
+            - device:   cpld3
+              register: 0x02
+              data:     [ 0xFF ]
+    -   name:       sfpp27_dom
+        bus:        i2c_0
+        dev_type:   sfpp
+        address:    0x51
+        pre:
+            - device:   cpld3
+              register: 0x02
+              data:     [ 0x02 ]
+        post:
+            - device:   cpld3
+              register: 0x02
+              data:     [ 0xFF ]
+    -   name:       sfpp28_dom
+        bus:        i2c_0
+        dev_type:   sfpp
+        address:    0x51
+        pre:
+            - device:   cpld3
+              register: 0x02
+              data:     [ 0x03 ]
+        post:
+            - device:   cpld3
+              register: 0x02
+              data:     [ 0xFF ]
+    -   name:       sfpp29_dom
+        bus:        i2c_0
+        dev_type:   sfpp
+        address:    0x51
+        pre:
+            - device:   cpld3
+              register: 0x02
+              data:     [ 0x04 ]
+        post:
+            - device:   cpld3
+              register: 0x02
+              data:     [ 0xFF ]
+    -   name:       sfpp30_dom
+        bus:        i2c_0
+        dev_type:   sfpp
+        address:    0x51
+        pre:
+            - device:   cpld3
+              register: 0x02
+              data:     [ 0x05 ]
+        post:
+            - device:   cpld3
+              register: 0x02
+              data:     [ 0xFF ]
+    -   name:       sfpp31_dom
+        bus:        i2c_0
+        dev_type:   sfpp
+        address:    0x51
+        pre:
+            - device:   cpld3
+              register: 0x02
+              data:     [ 0x06 ]
+        post:
+            - device:   cpld3
+              register: 0x02
+              data:     [ 0xFF ]
+    -   name:       sfpp32_dom
+        bus:        i2c_0
+        dev_type:   sfpp
+        address:    0x51
+        pre:
+            - device:   cpld3
+              register: 0x02
+              data:     [ 0x07 ]
+        post:
+            - device:   cpld3
+              register: 0x02
+              data:     [ 0xFF ]
+    -   name:       sfpp33_dom
+        bus:        i2c_0
+        dev_type:   sfpp
+        address:    0x51
+        pre:
+            - device:   cpld3
+              register: 0x02
+              data:     [ 0x08 ]
+        post:
+            - device:   cpld3
+              register: 0x02
+              data:     [ 0xFF ]
+    -   name:       sfpp34_dom
+        bus:        i2c_0
+        dev_type:   sfpp
+        address:    0x51
+        pre:
+            - device:   cpld3
+              register: 0x02
+              data:     [ 0x09 ]
+        post:
+            - device:   cpld3
+              register: 0x02
+              data:     [ 0xFF ]
+    -   name:       sfpp35_dom
+        bus:        i2c_0
+        dev_type:   sfpp
+        address:    0x51
+        pre:
+            - device:   cpld3
+              register: 0x02
+              data:     [ 0x0A ]
+        post:
+            - device:   cpld3
+              register: 0x02
+              data:     [ 0xFF ]
+    -   name:       sfpp36_dom
+        bus:        i2c_0
+        dev_type:   sfpp
+        address:    0x51
+        pre:
+            - device:   cpld3
+              register: 0x02
+              data:     [ 0x0B ]
+        post:
+            - device:   cpld3
+              register: 0x02
+              data:     [ 0xFF ]
+    -   name:       sfpp37_dom
+        bus:        i2c_0
+        dev_type:   sfpp
+        address:    0x51
+        pre:
+            - device:   cpld3
+              register: 0x02
+              data:     [ 0x0C ]
+        post:
+            - device:   cpld3
+              register: 0x02
+              data:     [ 0xFF ]
+    -   name:       sfpp38_dom
+        bus:        i2c_0
+        dev_type:   sfpp
+        address:    0x51
+        pre:
+            - device:   cpld3
+              register: 0x02
+              data:     [ 0x0D ]
+        post:
+            - device:   cpld3
+              register: 0x02
+              data:     [ 0xFF ]
+    -   name:       sfpp39_dom
+        bus:        i2c_0
+        dev_type:   sfpp
+        address:    0x51
+        pre:
+            - device:   cpld3
+              register: 0x02
+              data:     [ 0x0E ]
+        post:
+            - device:   cpld3
+              register: 0x02
+              data:     [ 0xFF ]
+    -   name:       sfpp40_dom
+        bus:        i2c_0
+        dev_type:   sfpp
+        address:    0x51
+        pre:
+            - device:   cpld3
+              register: 0x02
+              data:     [ 0x0F ]
+        post:
+            - device:   cpld3
+              register: 0x02
+              data:     [ 0xFF ]
+    -   name:       sfpp41_dom
+        bus:        i2c_0
+        dev_type:   sfpp
+        address:    0x51
+        pre:
+            - device:   cpld3
+              register: 0x02
+              data:     [ 0x10 ]
+        post:
+            - device:   cpld3
+              register: 0x02
+              data:     [ 0xFF ]
+    -   name:       sfpp42_dom
+        bus:        i2c_0
+        dev_type:   sfpp
+        address:    0x51
+        pre:
+            - device:   cpld3
+              register: 0x02
+              data:     [ 0x11 ]
+        post:
+            - device:   cpld3
+              register: 0x02
+              data:     [ 0xFF ]
+    -   name:       sfpp43_dom
+        bus:        i2c_0
+        dev_type:   sfpp
+        address:    0x51
+        pre:
+            - device:   cpld3
+              register: 0x02
+              data:     [ 0x12 ]
+        post:
+            - device:   cpld3
+              register: 0x02
+              data:     [ 0xFF ]
+    -   name:       sfpp44_dom
+        bus:        i2c_0
+        dev_type:   sfpp
+        address:    0x51
+        pre:
+            - device:   cpld3
+              register: 0x02
+              data:     [ 0x13 ]
+        post:
+            - device:   cpld3
+              register: 0x02
+              data:     [ 0xFF ]
+    -   name:       sfpp45_dom
+        bus:        i2c_0
+        dev_type:   sfpp
+        address:    0x51
+        pre:
+            - device:   cpld3
+              register: 0x02
+              data:     [ 0x14 ]
+        post:
+            - device:   cpld3
+              register: 0x02
+              data:     [ 0xFF ]
+    -   name:       sfpp46_dom
+        bus:        i2c_0
+        dev_type:   sfpp
+        address:    0x51
+        pre:
+            - device:   cpld3
+              register: 0x02
+              data:     [ 0x15 ]
+        post:
+            - device:   cpld3
+              register: 0x02
+              data:     [ 0xFF ]
+    -   name:       sfpp47_dom
+        bus:        i2c_0
+        dev_type:   sfpp
+        address:    0x51
+        pre:
+            - device:   cpld3
+              register: 0x02
+              data:     [ 0x16 ]
+        post:
+            - device:   cpld3
+              register: 0x02
+              data:     [ 0xFF ]
+    -   name:       sfpp48_dom
+        bus:        i2c_0
+        dev_type:   sfpp
+        address:    0x51
+        pre:
+            - device:   cpld3
+              register: 0x02
+              data:     [ 0x17 ]
+        post:
+            - device:   cpld3
+              register: 0x02
+              data:     [ 0xFF ]
 
     -   name:       fru_eeprom
         bus:        i2c_1

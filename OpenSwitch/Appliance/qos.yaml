@@ -1,0 +1,377 @@
+# Copyright (C) 2016 Hewlett-Packard Enterprise Development LP
+# All Rights Reserved.
+#
+#    Licensed under the Apache License, Version 2.0 (the "License"); you may
+#    not use this file except in compliance with the License. You may obtain
+#    a copy of the License at
+#
+#         http://www.apache.org/licenses/LICENSE-2.0
+#
+#    Unless required by applicable law or agreed to in writing, software
+#    distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+#    WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+#    License for the specific language governing permissions and limitations
+#    under the License.
+#
+#  QoS Description File for Generic-x86 64bit Switch
+#
+
+manufacturer:    Generic-x86
+product_name:    X86-64
+version:         '1'
+
+qos_info:
+    default_name:              default
+    factory_default_name:      factory-default
+    default_qos_trust:         none
+
+# TODO: learn how to have profile be 2-dim based on name like this:
+#schedule_profile:
+#    -   name:       default
+#        entries:
+#        -   queue:      0
+#            algorithm:  dwrr
+#     ...
+#
+schedule_profile_entries:
+        -   queue:      0
+            algorithm:  dwrr
+            weight:     1
+        -   queue:      1
+            algorithm:  dwrr
+            weight:     2
+        -   queue:      2
+            algorithm:  dwrr
+            weight:     3
+        -   queue:      3
+            algorithm:  dwrr
+            weight:     4
+        -   queue:      4
+            algorithm:  dwrr
+            weight:     5
+        -   queue:      5
+            algorithm:  dwrr
+            weight:     6
+        -   queue:      6
+            algorithm:  dwrr
+            weight:     7
+        -   queue:      7
+            algorithm:  strict
+
+queue_profile_entries:
+        -   queue:          0
+            description:    'Scavenger_and_backup_data'
+            local_priority: 0
+        -   queue:          1
+            description:    ""
+            local_priority: 1
+        -   queue:          2
+            description:    ""
+            local_priority: 2
+        -   queue:          3
+            description:    ""
+            local_priority: 3
+        -   queue:          4
+            description:    ""
+            local_priority: 4
+        -   queue:          5
+            description:    ""
+            local_priority: 5
+        -   queue:          6
+            description:    ""
+            local_priority: 6
+        -   queue:          7
+            description:    ""
+            local_priority: 7
+
+cos_map_entries:
+    -   code_point:     0
+        description:    'Best_Effort'
+        color:          green
+        local_priority: 1
+    -   code_point:     1
+        description:    Background
+        color:          green
+        local_priority: 0
+    -   code_point:     2
+        description:    'Excellent_Effort'
+        color:          green
+        local_priority: 2
+    -   code_point:     3
+        description:    'Critical_Applications'
+        color:          green
+        local_priority: 3
+    -   code_point:     4
+        description:    Video
+        color:          green
+        local_priority: 4
+    -   code_point:     5
+        description:    Voice
+        color:          green
+        local_priority: 5
+    -   code_point:     6
+        description:    'Internetwork_Control'
+        color:          green
+        local_priority: 6
+    -   code_point:     7
+        description:    'Network_Control'
+        color:          green
+        local_priority: 7
+
+dscp_map_entries:
+   -   code_point:     0
+       color:          green
+       description:    CS0
+       local_priority: 0
+   -   code_point:     1
+       color:          green
+       description:    ""
+       local_priority: 0
+   -   code_point:     2
+       color:          green
+       description:    ""
+       local_priority: 0
+   -   code_point:     3
+       color:          green
+       description:    ""
+       local_priority: 0
+   -   code_point:     4
+       color:          green
+       description:    ""
+       local_priority: 0
+   -   code_point:     5
+       color:          green
+       description:    ""
+       local_priority: 0
+   -   code_point:     6
+       color:          green
+       description:    ""
+       local_priority: 0
+   -   code_point:     7
+       color:          green
+       description:    ""
+       local_priority: 0
+   -   code_point:     8
+       color:          green
+       description:    CS1
+       local_priority: 1
+   -   code_point:     9
+       color:          green
+       description:    ""
+       local_priority: 1
+   -   code_point:     10
+       color:          green
+       description:    AF11
+       local_priority: 1
+   -   code_point:     11
+       color:          green
+       description:    ""
+       local_priority: 1
+   -   code_point:     12
+       color:          yellow
+       description:    AF12
+       local_priority: 1
+   -   code_point:     13
+       color:          green
+       description:    ""
+       local_priority: 1
+   -   code_point:     14
+       color:          red
+       description:    AF13
+       local_priority: 1
+   -   code_point:     15
+       color:          green
+       description:    ""
+       local_priority: 1
+   -   code_point:     16
+       color:          green
+       description:    CS2
+       local_priority: 2
+   -   code_point:     17
+       color:          green
+       description:    ""
+       local_priority: 2
+   -   code_point:     18
+       color:          green
+       description:    AF21
+       local_priority: 2
+   -   code_point:     19
+       color:          green
+       description:    ""
+       local_priority: 2
+   -   code_point:     20
+       color:          yellow
+       description:    AF22
+       local_priority: 2
+   -   code_point:     21
+       color:          green
+       description:    ""
+       local_priority: 2
+   -   code_point:     22
+       color:          red
+       description:    AF23
+       local_priority: 2
+   -   code_point:     23
+       color:          green
+       description:    ""
+       local_priority: 2
+   -   code_point:     24
+       color:          green
+       description:    CS3
+       local_priority: 3
+   -   code_point:     25
+       color:          green
+       description:    ""
+       local_priority: 3
+   -   code_point:     26
+       color:          green
+       description:    AF31
+       local_priority: 3
+   -   code_point:     27
+       color:          green
+       description:    ""
+       local_priority: 3
+   -   code_point:     28
+       color:          yellow
+       description:    AF32
+       local_priority: 3
+   -   code_point:     29
+       color:          green
+       description:    ""
+       local_priority: 3
+   -   code_point:     30
+       color:          red
+       description:    AF33
+       local_priority: 3
+   -   code_point:     31
+       color:          green
+       description:    ""
+       local_priority: 3
+   -   code_point:     32
+       color:          green
+       description:    CS4
+       local_priority: 4
+   -   code_point:     33
+       color:          green
+       description:    ""
+       local_priority: 4
+   -   code_point:     34
+       color:          green
+       description:    AF41
+       local_priority: 4
+   -   code_point:     35
+       color:          green
+       description:    ""
+       local_priority: 4
+   -   code_point:     36
+       color:          yellow
+       description:    AF42
+       local_priority: 4
+   -   code_point:     37
+       color:          green
+       description:    ""
+       local_priority: 4
+   -   code_point:     38
+       color:          red
+       description:    AF43
+       local_priority: 4
+   -   code_point:     39
+       color:          green
+       description:    ""
+       local_priority: 4
+   -   code_point:     40
+       color:          green
+       description:    CS5
+       local_priority: 5
+   -   code_point:     41
+       color:          green
+       description:    ""
+       local_priority: 5
+   -   code_point:     42
+       color:          green
+       description:    ""
+       local_priority: 5
+   -   code_point:     43
+       color:          green
+       description:    ""
+       local_priority: 5
+   -   code_point:     44
+       color:          green
+       description:    ""
+       local_priority: 5
+   -   code_point:     45
+       color:          green
+       description:    ""
+       local_priority: 5
+   -   code_point:     46
+       color:          green
+       description:    EF
+       local_priority: 5
+   -   code_point:     47
+       color:          green
+       description:    ""
+       local_priority: 5
+   -   code_point:     48
+       color:          green
+       description:    CS6
+       local_priority: 6
+   -   code_point:     49
+       color:          green
+       description:    ""
+       local_priority: 6
+   -   code_point:     50
+       color:          green
+       description:    ""
+       local_priority: 6
+   -   code_point:     51
+       color:          green
+       description:    ""
+       local_priority: 6
+   -   code_point:     52
+       color:          green
+       description:    ""
+       local_priority: 6
+   -   code_point:     53
+       color:          green
+       description:    ""
+       local_priority: 6
+   -   code_point:     54
+       color:          green
+       description:    ""
+       local_priority: 6
+   -   code_point:     55
+       color:          green
+       description:    ""
+       local_priority: 6
+   -   code_point:     56
+       color:          green
+       description:    CS7
+       local_priority: 7
+   -   code_point:     57
+       color:          green
+       description:    ""
+       local_priority: 7
+   -   code_point:     58
+       color:          green
+       description:    ""
+       local_priority: 7
+   -   code_point:     59
+       color:          green
+       description:    ""
+       local_priority: 7
+   -   code_point:     60
+       color:          green
+       description:    ""
+       local_priority: 7
+   -   code_point:     61
+       color:          green
+       description:    ""
+       local_priority: 7
+   -   code_point:     62
+       color:          green
+       description:    ""
+       local_priority: 7
+   -   code_point:     63
+       color:          green
+       description:    ""
+       local_priority: 7

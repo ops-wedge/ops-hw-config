@@ -46,6 +46,6 @@
 # time it will pass a higher int phase_id value to express to the plugin which
 # phase it should initialize.
 
-# - add Xpliant plugin here so it loads prior to platform-independent plugins
+- libovs_xpliant_plugin.so
 - libqos_plugin.so
 - libswitchd_stp_plugin

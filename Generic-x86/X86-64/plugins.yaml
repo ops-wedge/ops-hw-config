@@ -48,4 +48,5 @@
 
 - libovs_sim_plugin.so
 - libqos_plugin.so
+- libcopp_plugin.so
 - libswitchd_stp_plugin

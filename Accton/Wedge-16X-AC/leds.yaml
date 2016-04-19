@@ -1,0 +1,39 @@
+# Copyright (C) 2014-2015 Accton Technology Corporation
+# All Rights Reserved.
+#
+#    Licensed under the Apache License, Version 2.0 (the "License"); you may
+#    not use this file except in compliance with the License. You may obtain
+#    a copy of the License at
+#
+#         http://www.apache.org/licenses/LICENSE-2.0
+#
+#    Unless required by applicable law or agreed to in writing, software
+#    distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+#    WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+#    License for the specific language governing permissions and limitations
+#    under the License.
+#
+#  LED Description File for Accton 5712 Switch
+
+manufacturer:    Accton
+product_name:    5712-54X-O-AC-F
+version:         null
+
+led_info:
+      number_leds:       1
+      number_types:      1
+
+led_types:
+    -   type: loc      # location
+        settings:
+           OFF:        0x10
+           ON:         0x00
+           FLASHING:   0x20
+
+leds:
+     -  name:        loc
+        led_type:       loc
+        led_access:
+            device:       cpld1
+            register:     0x0a
+            bitmask:      0x30

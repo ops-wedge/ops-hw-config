@@ -1,0 +1,241 @@
+# Copyright (C) 2014-2015 Accton Technology Corporation
+# All Rights Reserved.
+#
+#    Licensed under the Apache License, Version 2.0 (the "License"); you may
+#    not use this file except in compliance with the License. You may obtain
+#    a copy of the License at
+#
+#         http://www.apache.org/licenses/LICENSE-2.0
+#
+#    Unless required by applicable law or agreed to in writing, software
+#    distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+#    WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+#    License for the specific language governing permissions and limitations
+#    under the License.
+#
+#  Devices Description File for Actton Wedge-16X-AC
+
+manufacturer:    Accton
+product_name:    Wedge-16X-AC
+version:         '1'
+
+buses:
+    -   name:       i2c_0
+        dev_name:   /dev/i2c-0
+        smbus:      true
+    -   name:       i2c_1
+        dev_name:   /dev/i2c-1
+        smbus:      true
+
+devices:    # just device relevant to platform code are listed
+    -   name:       qsfpp1
+        bus:        i2c_1
+        dev_type:   qsfpp
+        address:    0x50
+        pre:
+            - device:   i2c_mux1
+              register: NONE
+              data:     [ 0x01 ]
+        post:
+            - device:   i2c_mux1
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       qsfpp2
+        bus:        i2c_1
+        dev_type:   qsfpp
+        address:    0x50
+        pre:
+            - device:   i2c_mux1
+              register: NONE
+              data:     [ 0x02 ]
+        post:
+            - device:   i2c_mux1
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       qsfpp3
+        bus:        i2c_1
+        dev_type:   qsfpp
+        address:    0x50
+        pre:
+            - device:   i2c_mux1
+              register: NONE
+              data:     [ 0x04 ]
+        post:
+            - device:   i2c_mux1
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       qsfpp4
+        bus:        i2c_1
+        dev_type:   qsfpp
+        address:    0x50
+        pre:
+            - device:   i2c_mux1
+              register: NONE
+              data:     [ 0x08 ]
+        post:
+            - device:   i2c_mux1
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       qsfpp5
+        bus:        i2c_1
+        dev_type:   qsfpp
+        address:    0x50
+        pre:
+            - device:   i2c_mux1
+              register: NONE
+              data:     [ 0x10 ]
+        post:
+            - device:   i2c_mux1
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       qsfpp6
+        bus:        i2c_1
+        dev_type:   qsfpp
+        address:    0x50
+        pre:
+            - device:   i2c_mux1
+              register: NONE
+              data:     [ 0x20 ]
+        post:
+            - device:   i2c_mux1
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       qsfpp7
+        bus:        i2c_1
+        dev_type:   qsfpp
+        address:    0x50
+        pre:
+            - device:   i2c_mux1
+              register: NONE
+              data:     [ 0x40 ]
+        post:
+            - device:   i2c_mux1
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       qsfpp8
+        bus:        i2c_1
+        dev_type:   qsfpp
+        address:    0x50
+        pre:
+            - device:   i2c_mux1
+              register: NONE
+              data:     [ 0x80 ]
+        post:
+            - device:   i2c_mux1
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       qsfpp9
+        bus:        i2c_1
+        dev_type:   qsfpp
+        address:    0x50
+        pre:
+            - device:   i2c_mux2
+              register: NONE
+              data:     [ 0x01 ]
+        post:
+            - device:   i2c_mux2
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       qsfpp10
+        bus:        i2c_1
+        dev_type:   qsfpp
+        address:    0x50
+        pre:
+            - device:   i2c_mux2
+              register: NONE
+              data:     [ 0x02 ]
+        post:
+            - device:   i2c_mux2
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       qsfpp11
+        bus:        i2c_1
+        dev_type:   qsfpp
+        address:    0x50
+        pre:
+            - device:   i2c_mux2
+              register: NONE
+              data:     [ 0x04 ]
+        post:
+            - device:   i2c_mux2
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       qsfpp12
+        bus:        i2c_1
+        dev_type:   qsfpp
+        address:    0x50
+        pre:
+            - device:   i2c_mux2
+              register: NONE
+              data:     [ 0x08 ]
+        post:
+            - device:   i2c_mux2
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       qsfpp13
+        bus:        i2c_1
+        dev_type:   qsfpp
+        address:    0x50
+        pre:
+            - device:   i2c_mux2
+              register: NONE
+              data:     [ 0x10 ]
+        post:
+            - device:   i2c_mux2
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       qsfpp14
+        bus:        i2c_1
+        dev_type:   qsfpp
+        address:    0x50
+        pre:
+            - device:   i2c_mux2
+              register: NONE
+              data:     [ 0x20 ]
+        post:
+            - device:   i2c_mux2
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       qsfpp15
+        bus:        i2c_1
+        dev_type:   qsfpp
+        address:    0x50
+        pre:
+            - device:   i2c_mux2
+              register: NONE
+              data:     [ 0x40 ]
+        post:
+            - device:   i2c_mux2
+              register: NONE
+              data:     [ 0x00 ]
+    -   name:       qsfpp16
+        bus:        i2c_1
+        dev_type:   qsfpp
+        address:    0x50
+        pre:
+            - device:   i2c_mux2
+              register: NONE
+              data:     [ 0x80 ]
+        post:
+            - device:   i2c_mux2
+              register: NONE
+              data:     [ 0x00 ]
+
+    -   name:       fru_eeprom
+        bus:        i2c_1
+        dev_type:   fru_eeprom
+        address:    0x51
+    -   name:       i2c_mux1
+        bus:        i2c_1
+        dev_type:   i2c_mux
+        address:    0x74
+    -   name:       i2c_mux2
+        bus:        i2c_1
+        dev_type:   i2c_mux
+        address:    0x76
+    -   name:       cpld
+        bus:        i2c_1
+        dev_type:   cpld
+        address:    0x2A
+
+init:

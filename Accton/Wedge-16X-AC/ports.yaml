@@ -1,0 +1,599 @@
+# Copyright (C) 2014-2015 Accton Technology Corporation
+# All Rights Reserved.
+#
+#    Licensed under the Apache License, Version 2.0 (the "License"); you may
+#    not use this file except in compliance with the License. You may obtain
+#    a copy of the License at
+#
+#         http://www.apache.org/licenses/LICENSE-2.0
+#
+#    Unless required by applicable law or agreed to in writing, software
+#    distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+#    WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+#    License for the specific language governing permissions and limitations
+#    under the License.
+#
+#  Port Description File for Accton Wedge-16X-AC.
+#  Based on the AS6712 description file.
+
+manufacturer:    Accton
+product_name:   Wedge-16X-AC
+version:         '1'
+
+port_info:
+    number_ports:    16
+    max_port_speed:  40000
+    max_transmission_unit: 9216
+    max_lag_count:         1024
+    max_lag_member_count:  256
+    L3_port_requires_internal_VLAN: True
+
+#  Import or reference devices.yaml file
+
+
+#  Note: We will need PHY information for future switches
+#        Should include an array of PHY descriptors
+#        and add info to port indicating the associated PHY
+
+ports:
+
+    -  name:             1
+       switch_device:      0
+       switch_device_port: 1
+       pluggable:          True
+       connector:          QSFP_PLUS
+       max_speed:          40000
+       speeds:             [40000]
+       capabilities:       [enet40G]
+       subports:           []
+       supported_modules:  [TBD]
+       module_eeprom:      qsfpp1
+       module_signals:
+            qsfpp_reset:
+                device:     cpld
+                register:   0x04
+                bitmask:    0x01
+                polarity:   negative
+            qsfpp_mod_present:
+                device:     cpld
+                register:   0x0A
+                bitmask:    0x01
+                polarity:   negative
+            qsfpp_int:
+                device:     cpld
+                register:   0x08
+                bitmask:    0x01
+                polarity:   negative
+            qsfpp_lp_mode:
+                device:     cpld
+                register:   0x0C
+                bitmask:    0x01
+            qsfpp_interrupt:
+                device:     cpld
+                register:   0x06
+                bitmask:    0x01
+    -  name:             2
+       switch_device:      0
+       switch_device_port: 2
+       pluggable:          True
+       connector:          QSFP_PLUS
+       max_speed:          40000
+       speeds:             [40000]
+       capabilities:       [enet40G]
+       subports:           []
+       supported_modules:  [TBD]
+       module_eeprom:      qsfpp2
+       module_signals:
+            qsfpp_reset:
+                device:     cpld
+                register:   0x04
+                bitmask:    0x02
+                polarity:   negative
+            qsfpp_mod_present:
+                device:     cpld
+                register:   0x0A
+                bitmask:    0x02
+                polarity:   negative
+            qsfpp_int:
+                device:     cpld
+                register:   0x08
+                bitmask:    0x02
+                polarity:   negative
+            qsfpp_lp_mode:
+                device:     cpld
+                register:   0x0C
+                bitmask:    0x02
+            qsfpp_interrupt:
+                device:     cpld
+                register:   0x06
+                bitmask:    0x02
+    -  name:             3
+       switch_device:      0
+       switch_device_port: 3
+       pluggable:          True
+       connector:          QSFP_PLUS
+       max_speed:          40000
+       speeds:             [40000]
+       capabilities:       [enet40G]
+       subports:           []
+       supported_modules:  [TBD]
+       module_eeprom:      qsfpp3
+       module_signals:
+            qsfpp_reset:
+                device:     cpld
+                register:   0x04
+                bitmask:    0x04
+                polarity:   negative
+            qsfpp_mod_present:
+                device:     cpld
+                register:   0x0A
+                bitmask:    0x04
+                polarity:   negative
+            qsfpp_int:
+                device:     cpld
+                register:   0x08
+                bitmask:    0x04
+                polarity:   negative
+            qsfpp_lp_mode:
+                device:     cpld
+                register:   0x0C
+                bitmask:    0x04
+            qsfpp_interrupt:
+                device:     cpld
+                register:   0x06
+                bitmask:    0x04
+    -  name:             4
+       switch_device:      0
+       switch_device_port: 4
+       pluggable:          True
+       connector:          QSFP_PLUS
+       max_speed:          40000
+       speeds:             [40000]
+       capabilities:       [enet40G]
+       subports:           []
+       supported_modules:  [TBD]
+       module_eeprom:      qsfpp4
+       module_signals:
+            qsfpp_reset:
+                device:     cpld
+                register:   0x04
+                bitmask:    0x08
+                polarity:   negative
+            qsfpp_mod_present:
+                device:     cpld
+                register:   0x0A
+                bitmask:    0x08
+                polarity:   negative
+            qsfpp_int:
+                device:     cpld
+                register:   0x08
+                bitmask:    0x08
+                polarity:   negative
+            qsfpp_lp_mode:
+                device:     cpld
+                register:   0x0C
+                bitmask:    0x08
+            qsfpp_interrupt:
+                device:     cpld
+                register:   0x06
+                bitmask:    0x08
+    -  name:             5
+       switch_device:      0
+       switch_device_port: 5
+       pluggable:          True
+       connector:          QSFP_PLUS
+       max_speed:          40000
+       speeds:             [40000]
+       capabilities:       [enet40G]
+       subports:           []
+       supported_modules:  [TBD]
+       module_eeprom:      qsfpp5
+       module_signals:
+            qsfpp_reset:
+                device:     cpld
+                register:   0x04
+                bitmask:    0x10
+                polarity:   negative
+            qsfpp_mod_present:
+                device:     cpld
+                register:   0x0A
+                bitmask:    0x10
+                polarity:   negative
+            qsfpp_int:
+                device:     cpld
+                register:   0x08
+                bitmask:    0x10
+                polarity:   negative
+            qsfpp_lp_mode:
+                device:     cpld
+                register:   0x0C
+                bitmask:    0x10
+            qsfpp_interrupt:
+                device:     cpld
+                register:   0x06
+                bitmask:    0x10
+    -  name:             6
+       switch_device:      0
+       switch_device_port: 6
+       pluggable:          True
+       connector:          QSFP_PLUS
+       max_speed:          40000
+       speeds:             [40000]
+       capabilities:       [enet40G]
+       subports:           []
+       supported_modules:  [TBD]
+       module_eeprom:      qsfpp6
+       module_signals:
+            qsfpp_reset:
+                device:     cpld
+                register:   0x04
+                bitmask:    0x20
+                polarity:   negative
+            qsfpp_mod_present:
+                device:     cpld
+                register:   0x0A
+                bitmask:    0x20
+                polarity:   negative
+            qsfpp_int:
+                device:     cpld
+                register:   0x08
+                bitmask:    0x20
+                polarity:   negative
+            qsfpp_lp_mode:
+                device:     cpld
+                register:   0x0C
+                bitmask:    0x20
+            qsfpp_interrupt:
+                device:     cpld
+                register:   0x06
+                bitmask:    0x20
+    -  name:             7
+       switch_device:      0
+       switch_device_port: 7
+       pluggable:          True
+       connector:          QSFP_PLUS
+       max_speed:          40000
+       speeds:             [40000]
+       capabilities:       [enet40G]
+       subports:           []
+       supported_modules:  [TBD]
+       module_eeprom:      qsfpp7
+       module_signals:
+            qsfpp_reset:
+                device:     cpld
+                register:   0x04
+                bitmask:    0x40
+                polarity:   negative
+            qsfpp_mod_present:
+                device:     cpld
+                register:   0x0A
+                bitmask:    0x40
+                polarity:   negative
+            qsfpp_int:
+                device:     cpld
+                register:   0x08
+                bitmask:    0x40
+                polarity:   negative
+            qsfpp_lp_mode:
+                device:     cpld
+                register:   0x0C
+                bitmask:    0x40
+            qsfpp_interrupt:
+                device:     cpld
+                register:   0x06
+                bitmask:    0x40
+    -  name:             8
+       switch_device:      0
+       switch_device_port: 8
+       pluggable:          True
+       connector:          QSFP_PLUS
+       max_speed:          40000
+       speeds:             [40000]
+       capabilities:       [enet40G]
+       subports:           []
+       supported_modules:  [TBD]
+       module_eeprom:      qsfpp8
+       module_signals:
+            qsfpp_reset:
+                device:     cpld
+                register:   0x04
+                bitmask:    0x80
+                polarity:   negative
+            qsfpp_mod_present:
+                device:     cpld
+                register:   0x0A
+                bitmask:    0x80
+                polarity:   negative
+            qsfpp_int:
+                device:     cpld
+                register:   0x08
+                bitmask:    0x80
+                polarity:   negative
+            qsfpp_lp_mode:
+                device:     cpld
+                register:   0x0C
+                bitmask:    0x80
+            qsfpp_interrupt:
+                device:     cpld
+                register:   0x06
+                bitmask:    0x80
+    -  name:             9
+       switch_device:      0
+       switch_device_port: 9
+       pluggable:          True
+       connector:          QSFP_PLUS
+       max_speed:          40000
+       speeds:             [40000]
+       capabilities:       [enet40G]
+       subports:           []
+       supported_modules:  [TBD]
+       module_eeprom:      qsfpp9
+       module_signals:
+            qsfpp_reset:
+                device:     cpld
+                register:   0x05
+                bitmask:    0x01
+                polarity:   negative
+            qsfpp_mod_present:
+                device:     cpld
+                register:   0x0B
+                bitmask:    0x01
+                polarity:   negative
+            qsfpp_int:
+                device:     cpld
+                register:   0x09
+                bitmask:    0x01
+                polarity:   negative
+            qsfpp_lp_mode:
+                device:     cpld
+                register:   0x0D
+                bitmask:    0x01
+            qsfpp_interrupt:
+                device:     cpld
+                register:   0x07
+                bitmask:    0x01
+    -  name:             10
+       switch_device:      0
+       switch_device_port: 10
+       pluggable:          True
+       connector:          QSFP_PLUS
+       max_speed:          40000
+       speeds:             [40000]
+       capabilities:       [enet40G]
+       subports:           []
+       supported_modules:  [TBD]
+       module_eeprom:      qsfpp10
+       module_signals:
+            qsfpp_reset:
+                device:     cpld
+                register:   0x05
+                bitmask:    0x02
+                polarity:   negative
+            qsfpp_mod_present:
+                device:     cpld
+                register:   0x0B
+                bitmask:    0x02
+                polarity:   negative
+            qsfpp_int:
+                device:     cpld
+                register:   0x09
+                bitmask:    0x02
+                polarity:   negative
+            qsfpp_lp_mode:
+                device:     cpld
+                register:   0x0D
+                bitmask:    0x02
+            qsfpp_interrupt:
+                device:     cpld
+                register:   0x07
+                bitmask:    0x02
+    -  name:             11
+       switch_device:      0
+       switch_device_port: 11
+       pluggable:          True
+       connector:          QSFP_PLUS
+       max_speed:          40000
+       speeds:             [40000]
+       capabilities:       [enet40G]
+       subports:           []
+       supported_modules:  [TBD]
+       module_eeprom:      qsfpp11
+       module_signals:
+            qsfpp_reset:
+                device:     cpld
+                register:   0x05
+                bitmask:    0x04
+                polarity:   negative
+            qsfpp_mod_present:
+                device:     cpld
+                register:   0x0B
+                bitmask:    0x04
+                polarity:   negative
+            qsfpp_int:
+                device:     cpld
+                register:   0x09
+                bitmask:    0x04
+                polarity:   negative
+            qsfpp_lp_mode:
+                device:     cpld
+                register:   0x0D
+                bitmask:    0x04
+            qsfpp_interrupt:
+                device:     cpld
+                register:   0x07
+                bitmask:    0x04
+    -  name:             12
+       switch_device:      0
+       switch_device_port: 12
+       pluggable:          True
+       connector:          QSFP_PLUS
+       max_speed:          40000
+       speeds:             [40000]
+       capabilities:       [enet40G]
+       subports:           []
+       supported_modules:  [TBD]
+       module_eeprom:      qsfpp12
+       module_signals:
+            qsfpp_reset:
+                device:     cpld
+                register:   0x05
+                bitmask:    0x08
+                polarity:   negative
+            qsfpp_mod_present:
+                device:     cpld
+                register:   0x0B
+                bitmask:    0x08
+                polarity:   negative
+            qsfpp_int:
+                device:     cpld
+                register:   0x09
+                bitmask:    0x08
+                polarity:   negative
+            qsfpp_lp_mode:
+                device:     cpld
+                register:   0x0D
+                bitmask:    0x08
+            qsfpp_interrupt:
+                device:     cpld
+                register:   0x07
+                bitmask:    0x08
+    -  name:             13
+       switch_device:      0
+       switch_device_port: 13
+       pluggable:          True
+       connector:          QSFP_PLUS
+       max_speed:          40000
+       speeds:             [40000]
+       capabilities:       [enet40G]
+       subports:           []
+       supported_modules:  [TBD]
+       module_eeprom:      qsfpp13
+       module_signals:
+            qsfpp_reset:
+                device:     cpld
+                register:   0x05
+                bitmask:    0x10
+                polarity:   negative
+            qsfpp_mod_present:
+                device:     cpld
+                register:   0x0B
+                bitmask:    0x10
+                polarity:   negative
+            qsfpp_int:
+                device:     cpld
+                register:   0x09
+                bitmask:    0x10
+                polarity:   negative
+            qsfpp_lp_mode:
+                device:     cpld
+                register:   0x0D
+                bitmask:    0x10
+            qsfpp_interrupt:
+                device:     cpld
+                register:   0x07
+                bitmask:    0x10
+    -  name:             14
+       switch_device:      0
+       switch_device_port: 14
+       pluggable:          True
+       connector:          QSFP_PLUS
+       max_speed:          40000
+       speeds:             [40000]
+       capabilities:       [enet40G]
+       subports:           []
+       supported_modules:  [TBD]
+       module_eeprom:      qsfpp14
+       module_signals:
+            qsfpp_reset:
+                device:     cpld
+                register:   0x05
+                bitmask:    0x20
+                polarity:   negative
+            qsfpp_mod_present:
+                device:     cpld
+                register:   0x0B
+                bitmask:    0x20
+                polarity:   negative
+            qsfpp_int:
+                device:     cpld
+                register:   0x09
+                bitmask:    0x20
+                polarity:   negative
+            qsfpp_lp_mode:
+                device:     cpld
+                register:   0x0D
+                bitmask:    0x20
+            qsfpp_interrupt:
+                device:     cpld
+                register:   0x07
+                bitmask:    0x20
+    -  name:             15
+       switch_device:      0
+       switch_device_port: 15
+       pluggable:          True
+       connector:          QSFP_PLUS
+       max_speed:          40000
+       speeds:             [40000]
+       capabilities:       [enet40G]
+       subports:           []
+       supported_modules:  [TBD]
+       module_eeprom:      qsfpp15
+       module_signals:
+            qsfpp_reset:
+                device:     cpld
+                register:   0x05
+                bitmask:    0x40
+                polarity:   negative
+            qsfpp_mod_present:
+                device:     cpld
+                register:   0x0B
+                bitmask:    0x40
+                polarity:   negative
+            qsfpp_int:
+                device:     cpld
+                register:   0x09
+                bitmask:    0x40
+                polarity:   negative
+            qsfpp_lp_mode:
+                device:     cpld
+                register:   0x0D
+                bitmask:    0x40
+            qsfpp_interrupt:
+                device:     cpld
+                register:   0x07
+                bitmask:    0x40
+    -  name:             16
+       switch_device:      0
+       switch_device_port: 16
+       pluggable:          True
+       connector:          QSFP_PLUS
+       max_speed:          40000
+       speeds:             [40000]
+       capabilities:       [enet40G]
+       subports:           []
+       supported_modules:  [TBD]
+       module_eeprom:      qsfpp16
+       module_signals:
+            qsfpp_reset:
+                device:     cpld
+                register:   0x05
+                bitmask:    0x80
+                polarity:   negative
+            qsfpp_mod_present:
+                device:     cpld
+                register:   0x0B
+                bitmask:    0x80
+                polarity:   negative
+            qsfpp_int:
+                device:     cpld
+                register:   0x09
+                bitmask:    0x80
+                polarity:   negative
+            qsfpp_lp_mode:
+                device:     cpld
+                register:   0x0D
+                bitmask:    0x80
+            qsfpp_interrupt:
+                device:     cpld
+                register:   0x07
+                bitmask:    0x80

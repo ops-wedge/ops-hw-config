@@ -1,0 +1,115 @@
+# Copyright (C) 2014-2015 Accton Technology Corporation
+# All Rights Reserved.
+#
+#    Licensed under the Apache License, Version 2.0 (the "License"); you may
+#    not use this file except in compliance with the License. You may obtain
+#    a copy of the License at
+#
+#         http://www.apache.org/licenses/LICENSE-2.0
+#
+#    Unless required by applicable law or agreed to in writing, software
+#    distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+#    WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+#    License for the specific language governing permissions and limitations
+#    under the License.
+#
+#  Thermal Description File for Accton 5712 Switch
+
+manufacturer:    Accton
+product_name:    5712-54X-O-AC-F
+version:         null
+
+# import or reference devices list here
+
+thermal_info:
+      num_sensors:      3
+      polling_period:   5000   # 5 seconds
+      auto_shutdown:    True   # Auto shutdown if emergency alarm
+
+
+#  NOTE!!  The alarm and fan thresholds for sensors 1 and 2 were
+#          per Accton email guidance (July 18, 2014).  Other values
+#          are guesses.
+
+sensors:
+     -  number:        1
+#        location:     "Faceplate side of switch chip (U16)"
+        location:     "front"
+        device:       tmp1
+        sensor_type:  lm75
+        alarm_thresholds:
+              emergency_on:         75
+              emergency_off:        70
+              critical_on:          65
+              critical_off:         62
+              max_on:               57.7
+              max_off:              52.7
+              min:                   0
+              low_crit:            -10
+        fan_thresholds:
+              max_on:               57.7     #  Set fan speed to MAX
+              max_off:              52.7
+              fast_on:              53         # Set fan speed to FAST
+              fast_off:             47.7
+              medium_on:            49.5       # Set fan speed to BRISK
+              medium_off:           42.7
+
+
+     -  number:        2
+#        location:     "Fan side of switch chip near compute module (U6)"
+        location:     "back"
+        device:       tmp2
+        sensor_type:  lm75
+        thresholds:
+        alarm_thresholds:
+              emergency_on:         75
+              emergency_off:        70
+              critical_on:          65
+              critical_off:         62
+              max_on:               57.7
+              max_off:              52.7
+              min:                   0
+              low_crit:            -10
+        fan_thresholds:
+              max_on:               57.7     #  Set fan speed to MAX
+              max_off:              52.7
+              fast_on:              53         # Set fan speed to FAST
+              fast_off:             47.7
+              medium_on:            49.5       # Set fan speed to BRISK
+              medium_off:           42.7
+
+     -  number:        3
+#        location:     "Near QSFP modules (U15)"
+        location:     "side"
+        device:       tmp3
+        sensor_type:  lm75
+        alarm_thresholds:
+              emergency_on:         75
+              emergency_off:        70
+              critical_on:          65
+              critical_off:         62
+              max_on:               57.7
+              max_off:              52.7
+              min:                   0
+              low_crit:            -10
+        fan_thresholds:
+              max_on:               57.7     #  Set fan speed to MAX
+              max_off:              52.7
+              fast_on:              53         # Set fan speed to FAST
+              fast_off:             47.7
+              medium_on:            49.5       # Set fan speed to BRISK
+              medium_off:           42.7
+
+#     -  number:        4
+#        location:     "Embedded Switch Chip Sensors"
+#        device:       switch
+#        sensor_type:  brcm_trident2
+#        alarm_thresholds:
+#              emergency_on:        120
+#              emergency_off:       115
+#              critical_on:         110
+#              critical_off:        105
+#              max_on:              100
+#              max_off:              97
+#              min:                  10
+#              low_crit:              0
